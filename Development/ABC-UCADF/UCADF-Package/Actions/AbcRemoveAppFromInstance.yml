@@ -1,0 +1,19 @@
+# ===============================================================================
+# Removes an application to an instance.
+#
+# Expected properties:
+# - envType
+# - providerName
+# - suiteName
+# - instanceName
+# - application
+# ===============================================================================
+actions:
+  # Delete the instance application resource.
+  - action: UcdDeleteResource
+    resource: "${u:instancesDeployPath}/${u:envType}/${u:providerName}/${u:suiteName}/${u:instanceName}/${u:application}"
+
+  # Delete the application environment.
+  - action: UcdDeleteEnvironment
+    application: "${u:application}"
+    environment: "${u:envType} ${u:providerName} ${u:suiteName} ${u:instanceName}"

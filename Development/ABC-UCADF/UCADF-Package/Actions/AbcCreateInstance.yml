@@ -1,0 +1,28 @@
+# ===============================================================================
+# Creates an instance.
+#
+# Expected properties:
+# - envType
+# - providerName
+# - suiteName
+# - instanceName
+# ===============================================================================
+actions:
+  - action: UcAdfLoop
+    items: ${u:instancesPaths}
+    itemProperty: "instancesPath"
+    actions:
+      # Create the instance resource.
+      - action: UcdCreateGroupResource
+        resource: "${u:instancesPath}/${u:envType}/${u:providerName}/${u:suiteName}/${u:instanceName}"
+        failIfExists: false
+       
+      # Team/role type for instance resource.
+      - action: UcdAddResourcesToTeams
+        resources:
+          - "${u:instancesPath}/${u:envType}/${u:providerName}/${u:suiteName}/${u:instanceName}"
+        teams:
+          - team: "${u:suiteTeamNamePrefix} ${u:suiteName}"
+            subtype: "${u:resourceRoleTypeInstance}"
+        removeOthers: true
+ 

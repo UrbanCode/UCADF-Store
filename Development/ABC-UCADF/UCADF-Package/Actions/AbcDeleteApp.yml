@@ -1,0 +1,14 @@
+# ===============================================================================
+# Deletes an application.
+#
+# Expected properties:
+# - application
+# ===============================================================================
+actions:
+  # Delete the application.
+  - action: UcdDeleteApplication
+    application: "${u:application}"
+    
+  # Delete the application cache component.
+  - action: UcdDeleteComponent
+    component: "${u:application}-UCProcessCache"

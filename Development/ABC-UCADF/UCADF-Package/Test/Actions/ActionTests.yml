@@ -1,0 +1,160 @@
+# ===============================================================================
+# This actions file runs the UCADF action tests.
+# ===============================================================================
+
+# Initialize the properties.
+propertyFiles:
+  # The package-specific properties.
+  - fileName: "${u:ucAdfPackageDir}/Actions/AbcUcAdfActionProperties.yml"
+  
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+  
+  # The test-spectific properties.
+  - fileName: "${u:ucAdfPackageDir}/Test/UcAdfTestProperties.yml"
+
+#============================================================================
+# The actions to run.
+#============================================================================
+actions:
+  # ============================================================================
+  # Initialize the test data.
+  # ============================================================================
+  - action: UcAdfRunActionsFromFile
+    fileName: "${u:ucAdfPackageDir}/Test/Actions/InitializeTestData.yml"
+    
+  #============================================================================
+  # Create the test providers.
+  #============================================================================
+  - action: UcAdfLoop
+    items: ${u:envTypes}
+    itemProperty: "envType"
+    actions:
+      - action: UcAdfLoop
+        items: ${u:providers}
+        itemProperty: "providerName"
+        actions:
+          - action: UcAdfRunActionsFromFile
+            fileName: "${u:ucAdfPackageDir}/Actions/AbcCreateProvider.yml"
+                  
+  #============================================================================
+  # Create the test suites.
+  #============================================================================
+  - action: UcAdfLoop
+    items: ${u:suites}
+    itemProperty: "suiteName"
+    actions:
+      # Create the test suite.
+      - action: UcAdfRunActionsFromFile
+        fileName: "${u:ucAdfPackageDir}/Actions/AbcCreateSuite.yml"
+      # Create the test suite users.
+      - action: UcAdfRunActionsFromFile
+        fileName: "${u:ucAdfPackageDir}/Test/Actions/CreateTestSuiteUsers.yml"
+
+  #============================================================================
+  # Add the test suites and instances to the test providers.
+  #============================================================================
+  - action: UcAdfLoop
+    items: ${u:envTypes}
+    itemProperty: "envType"
+    actions:
+      - action: UcAdfLoop
+        items: ${u:suites}
+        itemProperty: "suiteName"
+        actions:
+          - action: UcAdfLoop
+            items: ${u:providers}
+            itemProperty: "providerName"
+            actions:
+              - action: UcAdfRunActionsFromFile
+                fileName: "${u:ucAdfPackageDir}/Actions/AbcAddSuiteToProvider.yml"
+              - action: UcAdfLoop
+                items: ${u:instances}
+                itemProperty: "instanceName"
+                actions:
+                  - action: UcAdfRunActionsFromFile
+                    fileName: "${u:ucAdfPackageDir}/Actions/AbcCreateInstance.yml"
+                  
+  #============================================================================
+  # Create the test application teams.
+  #============================================================================
+  - action: UcAdfLoop
+    items: ${u:appTeams}
+    itemProperty: "appTeamBaseName"
+    actions:
+      # Create the test application team.
+      - action: UcAdfRunActionsFromFile
+        fileName: "${u:ucAdfPackageDir}/Actions/AbcCreateAppTeam.yml"
+      # Create the test application team users.
+      - action: UcAdfRunActionsFromFile
+        fileName: "${u:ucAdfPackageDir}/Test/Actions/CreateTestAppTeamUsers.yml"
+          
+  #============================================================================
+  # Create the test applications.
+  #============================================================================
+  - action: UcAdfLoop
+    items: ${u:testApps}
+    itemProperty: "testApp"
+    actions:
+      - action: UcAdfRunActionsFromFile
+        propertyValues:
+          application: "${u:testApp/name}"
+          appTeamName: "${u:appTeamNamePrefix} ${u:testApp/team}"
+          appAssembly: "${u:ucAdfAppAssembly}"
+        fileName: "${u:ucAdfPackageDir}/Actions/AbcCreateApp.yml"
+  
+  #============================================================================
+  # Create the test components.
+  #============================================================================
+  - action: UcAdfLoop
+    items: ${u:testApps}
+    itemProperty: "testApp"
+    actions:
+      # Set application-level property values used by the other actions.
+      - action: UcAdfSetActionProperties
+        propertyValues:
+          application: ${u:testApp/name}
+          appTeamName: "${u:appTeamNamePrefix} ${u:testApp/team}"
+
+      # Process the application components.
+      - action: UcAdfLoop
+        items: ${u:testApp/components}
+        itemProperty: "comp"
+        actions:
+          # Create the test component.
+          - action: UcAdfRunActionsFromFile
+            propertyValues:
+              compFullName: "${u:application}-${u:comp/name}"
+              compType: ${u:comp/type}
+              compOrder: ${u:comp/order}
+            fileName: "${u:ucAdfPackageDir}/Actions/AbcCreateAppComponent.yml"
+          # Create the test component version.
+          - action: UcAdfRunActionsFromFile
+            propertyValues:
+              compFullName: "${u:testApp/name}-${u:comp/name}"
+            fileName: "${u:ucAdfPackageDir}/Test/Actions/CreateTestCompVersion.yml"
+            
+  #============================================================================
+  # Add the applications to the instances.
+  #============================================================================
+  - action: UcAdfLoop
+    items: ${u:testApps}
+    itemProperty: "testApp"
+    actions:
+      # Set application-level property values used by the other actions.
+      - action: UcAdfSetActionProperties
+        propertyValues:
+          application: ${u:testApp/name}
+          appTeamName: "${u:appTeamNamePrefix} ${u:testApp/team}"
+          suiteTeamName: "${u:suiteTeamNamePrefix} ${u:testApp/suiteName}"
+      - action: UcAdfLoop
+        items: ${u:envTypes}
+        itemProperty: "envType"
+        actions:
+        - action: UcAdfRunActionsFromFile
+          propertyValues:
+            providerName: "${u:testApp/providerName}"
+            suiteName: "${u:testApp/suiteName}"
+            instanceName: "${u:testApp/instanceName}"
+          fileName: "${u:ucAdfPackageDir}/Actions/AbcAddAppToInstance.yml"

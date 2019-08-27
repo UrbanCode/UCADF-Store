@@ -1,0 +1,15 @@
+# ===============================================================================
+# Deletes an application component.
+#
+# Expected properties:
+# - application
+# - compFullName
+# ===============================================================================
+actions:
+  - action: UcdRemoveComponentFromApplication
+    application: "${u:application}"
+    component: "${u:compFullName}"
+    failIfNotFound: false
+    
+  - action: UcdDeleteComponent
+    component: "${u:compFullName}"

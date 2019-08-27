@@ -1,0 +1,46 @@
+# ===============================================================================
+# This actions file synchronizes the application processes with the UCADF assembly.
+# ===============================================================================
+
+# The actions to run.
+actions:
+  # Get the list of applications.
+  - action: UcdGetApplications
+    actionReturnPropertyName: "ucdApplications"
+  
+  # Process each application.
+  - action: UcAdfLoop
+    items: ${u:ucdApplications}
+    itemProperty: "ucdApplication"
+    actions:
+      # Skip processing the management and assembly applications.
+      - action: UcAdfLoopContinue
+        when: 'Eval("${u:ucAdfManagementApp}".equals("${u:ucdApplication/name}") || "${u:ucAdfAppAssembly}".equals("${u:ucdApplication/name}"))'
+
+      # Skip processing applications that don't have a Management environment.
+      - action: UcdGetEnvironment
+        application: "${u:ucdApplication/name}"
+        environment: "Management"
+        failIfNotFound: false
+      - action: UcAdfComment
+        comment: "Environment %s"
+        values:
+          - "${u:actionReturn}"
+      - action: UcAdfLoopContinue
+        when: 'Eval("${u:actionReturn}".equals(""))'
+        
+      # Get the application Management environment property value of the assembly name.
+      - action: UcdGetEnvironmentProperty
+        application: "${u:ucdApplication/name}"
+        environment: "Management"
+        property: "ucAdfAppAssembly"
+        failIfNotFound: false
+        
+      # Skip processing any assembly value other then the correct one.
+      - action: UcAdfLoopContinue
+        when: 'Eval(!"${u:actionReturn}".equals("${u:ucAdfAppAssembly}"))'
+
+      # Synchronize the application processes from the assembly application to the target application.
+      - action: UcdSyncApplicationProcesses
+        fromApplication: "${u:ucAdfAppAssembly}"
+        toApplication: "${u:ucdApplication/name}"

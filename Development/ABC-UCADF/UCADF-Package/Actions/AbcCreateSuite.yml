@@ -1,0 +1,138 @@
+# ===============================================================================
+# Creates a suite.
+#
+# Expected properties:
+# - suiteName
+# (TBD) suiteDescription.
+# ===============================================================================
+actions:
+  # ==================================================================================
+  # Set properties used by the action.
+  # ==================================================================================
+  - action: UcAdfSetActionProperties
+    propertyValues:
+      suiteTeamName: "${u:suiteTeamNamePrefix} ${u:suiteName}"
+      suiteTeamEnvName: "${u:suiteTeamEnvPrefix} ${u:suiteName}"
+
+  # ==================================================================================
+  # Set up the suite security.
+  # ==================================================================================
+  # Create the suite team.
+  - action: UcdCreateTeam
+    name: "${u:suiteTeamName}"
+    failIfExists: false
+
+  # Copy the admin groups/users to the suite team.
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleAdministrator}"
+    toTeam: "${u:suiteTeamName}" 
+    toRole: "${u:ucAdfRoleAdministrator}"
+    
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleSuperuser}"
+    toTeam: "${u:suiteTeamName}" 
+    toRole: "${u:ucAdfRoleSuperuser}"
+    
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucdRoleAdministrator}"
+    toTeam: "${u:suiteTeamName}" 
+    toRole: "${u:ucdRoleAdministrator}"
+    
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleSuiteAdministrator}"
+    toTeam: "${u:suiteTeamName}" 
+    toRole: "${u:ucAdfRoleSuiteAdministrator}"
+    
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleSuiteAdministrator}"
+    toTeam: "${u:suiteTeamName}" 
+    toRole: "${u:ucAdfRoleSuiteAdministrator}"
+    
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleSuiteAdministrator}"
+    toTeam: "${u:suiteTeamName}" 
+    toRole: "${u:ucAdfRoleViewer}"
+
+  # ==================================================================================
+  # Set up the suite team environment.
+  # ==================================================================================
+  # Create the SuiteTeam environment.
+  - action: UcdCreateEnvironment
+    application: "${u:ucAdfManagementApp}"
+    name: "${u:suiteTeamEnvName}"
+    color: "LIGHTPURPLE"
+    failIfExists: false
+    
+  - action: UcdAddEnvironmentToTeams
+    application: "${u:ucAdfManagementApp}"
+    environment: "${u:suiteTeamEnvName}"
+    teams:
+      - team: "${u:suiteTeamName}"
+        subtype: "${u:environmentRoleTypeSuiteTeam}"
+    removeOthers: true
+    
+  - action: UcdSetEnvironmentProperties
+    application: "${u:ucAdfManagementApp}"
+    environment: "${u:suiteTeamEnvName}"
+    properties:
+      - name: "abcSuiteName"
+        value: "${u:suiteName}"
+      - name: "abcTeamName"
+        value: "${u:suiteTeamName}"
+      - name: "abcTeamType"
+        value: "SuiteTeam"
+        
+  - action: UcdAddEnvironmentBaseResources
+    application: "${u:ucAdfManagementApp}"
+    environment: "${u:suiteTeamEnvName}"
+    resources:
+      - "${u:ucAdfManagementPath}"
+
+  # ==================================================================================
+  # Create the suite team administrator user and token to allow suite management.
+  # ==================================================================================
+  # Create the SuiteTeam Administrator user.
+  - action: UcdCreateUser
+    name: "${u:suiteTeamName} Administrator"
+    password: ""
+    actionReturnPropertyName: "userCreated"
+    failIfExists: false
+        
+  # If the user was created then create the user token.
+  - action: UcAdfWhen
+    when: "${u:userCreated}"
+    actions:
+      # Create a token for the SuiteTeam token user.
+      - action: UcdCreateAuthToken
+        user: "${u:suiteTeamName} Administrator"
+        description: "Used for automation."
+        actionReturnPropertyName: "tokenReturn"
+      # If the token was created then save it as an environment property.
+      - action: UcAdfWhen
+        when: "${u:tokenReturn/created}"
+        actions:
+          - action: UcdSetEnvironmentProperties
+            application: "${u:ucAdfManagementApp}"
+            environment: "${u:suiteTeamEnvName}"
+            properties:
+              - name: "ABCSuiteAdministratorAuthToken"
+                value: "${u:tokenReturn/token}"
+                secure: true
+              
+  # Change the team members.
+  - action: UcdChangeTeamMembers
+    addUsers:
+      - "${u:suiteTeamName} Administrator"
+    teamRoles:
+      - team: "${u:suiteTeamName}"
+        role: "${u:ucAdfRoleSuiteAdministrator}"
+      - team: "${u:ucAdfName}"
+        role: "${u:ucAdfRoleViewer}"
+      - team: "Public"
+        role: "Public Viewer"

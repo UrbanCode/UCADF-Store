@@ -1,0 +1,21 @@
+# ===============================================================================
+# Generates an application or suite team security report.
+
+# Expected properties:
+# - teamType
+# - teamName (Optional. If specified then a security report is generated for that team only.)
+# ===============================================================================
+actions:
+  # Generate an application team security report.
+  - action: UcAdfGenerateSecurityReport
+    when: 'Eval("AppTeam".equals("${u:teamType}"))'
+    teamName: "${u?:teamName}"
+    teamNameRegex: "^${u:appTeamNamePrefix}.*"
+    roles: "${u:appTeamRoles}"
+
+  # Generate a suite team security report.
+  - action: UcAdfGenerateSecurityReport
+    when: 'Eval("SuiteTeam".equals("${u:teamType}"))'
+    teamName: "${u?:teamName}"
+    teamNameRegex: "^${u:suiteTeamNamePrefix}.*"
+    roles: "${u:suiteTeamRoles}"

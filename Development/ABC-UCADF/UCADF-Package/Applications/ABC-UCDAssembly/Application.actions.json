@@ -1,0 +1,13 @@
+{
+  "actions" : [ {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC-UCDAssembly",
+    "process" : "Create Application Component",
+    "requiredRole" : "ABC Application Manager"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC-UCDAssembly",
+    "process" : "Delete ALL of an Application's Component Information from UrbanCode",
+    "requiredRole" : "ABC Application Manager"
+  } ]
+}

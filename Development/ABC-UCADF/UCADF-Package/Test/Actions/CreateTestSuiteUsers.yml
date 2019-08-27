@@ -1,0 +1,28 @@
+# ===============================================================================
+# Creates test suite users.
+#
+# Expected properties:
+# - suiteName
+# ===============================================================================
+actions:
+  - action: UcAdfLoop
+    items: ${u:suiteTeamRoles}
+    itemProperty: "suiteTeamRole"
+    actions:
+      # Create the test suite user for the test suite role.
+      - action: UcdCreateUser
+        name: 'Eval("${u:suiteTeamNamePrefix} ${u:suiteName} ${u:suiteTeamRole}".replaceAll(" ", "_").toUpperCase())'
+        password: ""
+        failIfExists: false
+        
+      # Add the test suite user to the test suite role.
+      - action: UcdChangeTeamMembers
+        addUsers:
+          - 'Eval("${u:suiteTeamNamePrefix} ${u:suiteName} ${u:suiteTeamRole}".replaceAll(" ", "_").toUpperCase())'
+        teamRoles:
+          - team: "${u:suiteTeamNamePrefix} ${u:suiteName}"
+            role: "${u:suiteTeamRole}"
+          - team: "${u:ucAdfName}"
+            role: "${u:ucAdfRoleViewer}"
+          - team: "Public"
+            role: "Public Viewer"

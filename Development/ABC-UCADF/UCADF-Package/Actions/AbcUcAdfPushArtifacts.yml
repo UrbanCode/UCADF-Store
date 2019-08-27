@@ -1,0 +1,85 @@
+# ===============================================================================
+# This actions file pushes the ABC-UCADF-Package artifacts to an UrbanCode instance as a component version.
+# ===============================================================================
+
+# Initialize the properties.
+propertyFiles:
+  # The package-specific properties.
+  - fileName: "${u:packageDir}/Actions/AbcUcAdfActionProperties.yml"
+  
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+  
+  # The instance-package-specific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/ABC-UCADF-Package.secure.properties"
+
+# Run the actions.
+actions:
+  # ==================================================================================
+  # Validates required properties exist.
+  # ==================================================================================
+  - action: UcAdfComment
+    comment: "packageDir=%s"
+    values:
+      - "${u:packageDir}"
+      - "${u:corePackageVersion}"
+
+  # Validate the core package version exists.
+  - action: UcdGetVersion
+    component: "UCADF-Core-Package"
+    version: "${u:corePackageVersion}"
+    
+  # ==================================================================================
+  # If no package version was specified then generate one.
+  # ==================================================================================
+  - action: UcAdfWhen
+    when: 'Eval("${u?:packageVersion}".equals(""))'
+    actions:
+      - action: UcAdfComment
+        actionInfo: false
+        comment: "!!! No value for packageVersion provided so generating one. !!!"
+      - action: UcAdfSetActionProperties
+        setStatic: true
+        propertyValues:
+          packageVersion: 'Eval(import java.text.SimpleDateFormat; new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()))'
+      
+  # ==================================================================================
+  # Create the ABC-UCADF-Package component version on the target instance.
+  # ==================================================================================
+  # Create the component.
+  - action: UcdCreateComponent
+    name: "ABC-UCADF-Package"
+    failIfExists: false
+
+  # Add the component to the ABC team.    
+  - action: UcdAddComponentToTeams
+    component: "ABC-UCADF-Package"
+    teams:
+      - team: "ABC"
+        subtype: "ABC Management Component"
+
+  # Create the component version.
+  - action: UcdCreateVersion
+    component: "ABC-UCADF-Package"
+    name: "${u:packageVersion}"
+    actionReturnPropertyName: "versionCreated"
+    failIfExists: false
+    
+  # If the version was created then add files to the version.
+  - action: UcdAddVersionFiles
+    when: 'Eval("${u:versionCreated}" == "true")'
+    component: "ABC-UCADF-Package"
+    version: "${u:packageVersion}"
+    base: "${u:packageDir}"
+    include:
+      - "**/*"
+
+  # ==================================================================================
+  # Configure the ABC-UCADF component versions on the target instance.
+  # ==================================================================================
+  - action: UcdSetSystemProperties
+    systemProperties:
+      - name: "ABC-UCADF-Package-Versions"
+        value: "ABC-UCADF-Package:${u:packageVersion},UCADF-Core-Package:${u:corePackageVersion}"
+        isSecure: false

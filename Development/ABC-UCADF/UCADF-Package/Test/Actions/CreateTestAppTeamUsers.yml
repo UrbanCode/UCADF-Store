@@ -1,0 +1,28 @@
+# ===============================================================================
+# Creates test application team users.
+#
+# Expected properties:
+# - appTeamBaseName
+# ===============================================================================
+actions:
+  - action: UcAdfLoop
+    items: ${u:appTeamRoles}
+    itemProperty: "appTeamRole"
+    actions:
+      # Create the test application team user for the test application team role.
+      - action: UcdCreateUser
+        name: 'Eval("${u:appTeamNamePrefix} ${u:appTeamBaseName} ${u:appTeamRole}".replaceAll(" ", "_").toUpperCase())'
+        password: ""
+        failIfExists: false
+        
+      # Add the test application team user to the test application team role.
+      - action: UcdChangeTeamMembers
+        addUsers:
+          - 'Eval("${u:appTeamNamePrefix} ${u:appTeamBaseName} ${u:appTeamRole}".replaceAll(" ", "_").toUpperCase())'
+        teamRoles:
+          - team: "${u:appTeamNamePrefix} ${u:appTeamBaseName}"
+            role: "${u:appTeamRole}"
+          - team: "${u:ucAdfName}"
+            role: "${u:ucAdfRoleViewer}"
+          - team: "Public"
+            role: "Public Viewer"

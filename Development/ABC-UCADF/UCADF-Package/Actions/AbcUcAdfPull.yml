@@ -1,0 +1,39 @@
+# ===============================================================================
+# This actions file exports the ABC-UCADF from an UrbanCode instance.
+# ===============================================================================
+
+# Initialize the properties.
+propertyFiles:
+  # The package-specific properties.
+  - fileName: "${u:ucAdfPackageDir}/Actions/AbcUcAdfActionProperties.yml"
+  
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+  
+# Run the actions.
+actions:
+  # Export the security actions.
+  - action: UcdWriteSecurityRolesPermissions
+    match: "^ABC .*"
+    fileName: "${u:ucAdfPackageDir}/Actions/AbcUcAdfSecurity.json"
+
+  # Export the UCADF Management application.
+  - action: UcdExportApplication
+    application: "${u:ucAdfManagementApp}"
+    fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfManagementApp}/Application.json"
+
+  - action: UcAdfUpdatePropertiesFile
+    fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfManagementApp}/Application.properties"
+    propertyValues:
+      keystoreNames: "${u:actionReturn/keystoreNames}"
+        
+  # Export the UCADF-Assembly application.
+  - action: UcdExportApplication
+    application: "${u:ucAdfAppAssembly}"
+    fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfAppAssembly}/Application.json"
+
+  - action: UcAdfUpdatePropertiesFile
+    fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfAppAssembly}/Application.properties"
+    propertyValues:
+      keystoreNames: "${u:actionReturn/keystoreNames}"

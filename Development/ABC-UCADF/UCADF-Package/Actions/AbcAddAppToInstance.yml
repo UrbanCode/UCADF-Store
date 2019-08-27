@@ -1,0 +1,75 @@
+# ===============================================================================
+# Adds an application to an instance.
+#
+# Expected properties:
+# - envType
+# - providerName
+# - suiteName
+# - instanceName
+# - application
+# ===============================================================================
+actions:
+  # Use the application's first team name as the application team team name.
+  - action: UcdGetApplication
+    application: "${u:application}"
+    actionReturnPropertyName: "ucdApplication"
+  - action: UcAdfSetActionProperties
+    propertyValues:
+      appTeamName: "${u:ucdApplication/extendedSecurity/teams/0/teamName}"
+
+  # Must add the application viewers to the higher-level resource viewers so they can see the higher-level resource information.
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:appTeamName}"
+    fromRole: "${u:ucAdfRoleViewer}"
+    toTeam: "${u:suiteTeamNamePrefix} ${u:suiteName}"
+    toRole: "${u:ucAdfRoleViewer}"
+    
+  # Create the instance application resource.
+  - action: UcdCreateGroupResource
+    resource: "${u:instancesDeployPath}/${u:envType}/${u:providerName}/${u:suiteName}/${u:instanceName}/${u:application}"
+    failIfExists: false
+   
+  # Team/role type for instance resource.
+  - action: UcdAddResourcesToTeams
+    resources:
+      - "${u:instancesDeployPath}/${u:envType}/${u:providerName}/${u:suiteName}/${u:instanceName}/${u:application}"
+    teams:
+      - team: "${u:appTeamName}"
+        subtype: "${u:resourceRoleTypeApplication}"
+    removeOthers: true
+
+  # Create the instance application component resources.
+  - action: UcdGetComponentsInApplication
+    application: "${u:application}"
+    
+  - action: UcAdfLoop
+    items: ${u:actionReturn}
+    itemProperty: "ucdComponent"
+    actions:
+      - action: UcdCreateComponentResource
+        resource: "${u:instancesDeployPath}/${u:envType}/${u:providerName}/${u:suiteName}/${u:instanceName}/${u:application}/${u:ucdComponent/name}"
+        component: "${u:ucdComponent/name}"
+        failIfExists: false
+
+  # Create the application environment.
+  - action: UcdCreateEnvironment
+    application: "${u:application}"
+    name: "${u:envType} ${u:providerName} ${u:suiteName} ${u:instanceName}"
+    color: 'Eval("${u:envType}" == "Production" ? "RED" : "GREEN")'
+    failIfExists: false
+    
+  # Team/role type for application environment.
+  - action: UcdAddEnvironmentToTeams
+    application: "${u:application}"
+    environment: "${u:envType} ${u:providerName} ${u:suiteName} ${u:instanceName}"
+    teams:
+      - team: "${u:appTeamName}"
+        subtype: "${u:ucAdfName} ${u:envType} Environment"
+    removeOthers: true
+    
+  # Add base resources to the application environment.
+  - action: UcdAddEnvironmentBaseResources
+    application: "${u:application}"
+    environment: "${u:envType} ${u:providerName} ${u:suiteName} ${u:instanceName}"
+    resources:
+      - "${u:instancesDeployPath}/${u:envType}/${u:providerName}/${u:suiteName}/${u:instanceName}/${u:application}"

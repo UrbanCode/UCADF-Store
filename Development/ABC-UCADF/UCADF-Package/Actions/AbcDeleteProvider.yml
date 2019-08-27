@@ -1,0 +1,15 @@
+# ===============================================================================
+# Deletes a provider by removing the resources from the resource tree.
+#
+# Expected properties:
+# - envType
+# - providerName
+# ===============================================================================
+actions:
+  - action: UcAdfLoop
+    items: ${u:instancesPaths}
+    itemProperty: "instancesPath"
+    actions:
+      # Delete the provider resource.
+      - action: UcdDeleteResource
+        resource: "${u:instancesPath}/${u:envType}/${u:providerName}"

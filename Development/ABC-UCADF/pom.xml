@@ -1,0 +1,193 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>ABC-UCADF-Library</name>
+	<groupId>org.urbancode.ucadf.abc</groupId>
+	<artifactId>ABC-UCADF</artifactId>
+	<version>0.0.1</version>
+
+	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<ucAppName>ABC-UCADF</ucAppName>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<ucAdfCoreVersion>[0.0,)</ucAdfCoreVersion>
+	</properties>
+
+    <!-- Configuration required to deploy artifacts to a Maven repository. -->
+	<distributionManagement>
+		<repository>
+			<id>${MVN_REPO_ID}</id>
+			<name>${MVN_REPO_NAME}</name>
+			<url>${MVN_REPO_URL}</url>
+		</repository>
+		<snapshotRepository>
+			<id>${MVN_REPO_ID}</id>
+			<name>${MVN_REPO_NAME}</name>
+			<url>${MVN_REPO_URL}</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build> 
+		<sourceDirectory>src/main/groovy</sourceDirectory>
+		<testSourceDirectory>src/test/groovy</testSourceDirectory>
+		<plugins>
+			<!-- Eclipse plugin for Groovy source files. -->
+            <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-eclipse-plugin</artifactId>
+            	<version>2.9</version>
+            	<configuration>
+            		<additionalProjectnatures>
+            			<projectnature>org.eclipse.jdt.groovy.core.groovyNature</projectnature>
+					</additionalProjectnatures>
+					<sourceIncludes>
+						<sourceIncludes>**/*.groovy</sourceIncludes>
+					</sourceIncludes>
+				</configuration>
+			</plugin>
+			
+			<!-- Set a Java compiler level. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			
+             <!-- Groovy compiler via Ant plugin. -->
+			<plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${basedir}/src/main/groovy"/>
+                                <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc">
+                                    <classpath refid="maven.compile.classpath"/>
+                                </taskdef>
+                                <mkdir dir="${project.build.outputDirectory}"/>
+                                <groovyc destdir="${project.build.outputDirectory}" srcdir="${basedir}/src/main/groovy/" listfiles="true">
+                                    <classpath refid="maven.compile.classpath"/>
+                                </groovyc>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${basedir}/src/test/groovy"/>
+                                <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc">
+                                    <classpath refid="maven.test.classpath"/>
+                                </taskdef>
+                                <mkdir dir="${project.build.testOutputDirectory}"/>
+                                <groovyc destdir="${project.build.testOutputDirectory}" srcdir="${basedir}/src/test/groovy/" listfiles="true">
+                                    <classpath refid="maven.test.classpath"/>
+                                </groovyc>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			
+			<!-- Use shade plugin to create jar with all dependencies. -->
+			<!-- 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<artifactSet>
+						<excludes>
+							<exclude>org.urbancode.ucadf.core:UCADF-Core-Library:jar:</exclude>
+						</excludes>
+					</artifactSet>
+              	</configuration>
+				<executions>
+				  <execution>
+					<phase>package</phase>
+					<goals>
+						<goal>shade</goal>
+					</goals>
+				  </execution>
+				</executions>
+			</plugin>
+			-->
+			
+            <!-- Skip testing -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            
+            <!-- Plugin that deploys to a Maven repository. Tied to deploy phase. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+		
+		<!--
+		Above maven-dependepcy-plugin gives a validation error in m2e. 
+		To fix that, add the plugin management step below. Per: http://stackoverflow.com/a/12109018
+		-->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[2.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencies>
+		<!-- Use the UCADF Core library. -->
+        <dependency>
+            <groupId>org.urbancode.ucadf.core</groupId>
+            <artifactId>UCADF-Core-Library</artifactId>
+            <version>${ucAdfCoreVersion}</version>
+        </dependency>
+	</dependencies>
+</project>

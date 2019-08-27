@@ -1,0 +1,69 @@
+# ============================================================================
+# Test property values.
+# ============================================================================
+propertyValues:
+  # Test entities prefix.
+  ucAdfTestPrefix: "${u:ucAdfName}UCADFTEST"
+  
+  # Test users with fake password.
+  fakeAdministrator: "ABC_ABC_ADMINISTRATOR"
+  fakeUsers:
+    - "${u:fakeAdministrator}"
+    
+   # Test providers.
+  provider1: "${u:ucAdfTestPrefix}PROVIDER1"
+  providerDelete: "${u:ucAdfTestPrefix}PROVIDERDELETE"
+  providers:
+    - "${u:provider1}"
+    - "${u:providerDelete}"
+  
+  # Test suites.
+  suite1: "${u:ucAdfTestPrefix}SUITE1"
+  suiteDelete: "${u:ucAdfTestPrefix}SUITEDELETE"
+  suites:
+    - "${u:suite1}"
+    - "${u:suiteDelete}"
+    
+  # Test instances.
+  instance1: "${u:ucAdfTestPrefix}INSTANCE1"
+  instanceDelete: "${u:ucAdfTestPrefix}INSTANCEDELETE"
+  instances:
+    - "${u:instance1}"
+    - "${u:instanceDelete}"
+    
+  # Test application teams.
+  appTeam1: "${u:ucAdfTestPrefix}APPTEAM1"
+  appTeam2: "${u:ucAdfTestPrefix}APPTEAM2"
+  appTeamDelete: "${u:ucAdfTestPrefix}APPTEAMDELETE"
+  appTeams:
+    - "${u:appTeam1}"
+    - "${u:appTeam2}"
+    - "${u:appTeamDelete}"
+    
+ # Application-level properties.
+  app1: "${u:ucAdfTestPrefix}APP1"
+  appDelete: "${u:ucAdfTestPrefix}APPDELETE"
+  testApps:
+    - name: "${u:app1}"
+      team: "${u:appTeam1}"
+      assembly: "${u:ucAdfAppAssembly}"
+      components:
+        - name: "COMP1"
+          type: "Deployable"
+          order: "1"
+        - name: "COMP2"
+          type: "Deployable"
+          order: "1"
+      providerName: "${u:provider1}"
+      suiteName: "${u:suite1}"
+      instanceName: "${u:instance1}"
+    - name: "${u:appDelete}"
+      team: "${u:appTeamDelete}"
+      assembly: "${u:ucAdfAppAssembly}"
+      components:
+        - name: "DELETE"
+          type: "Deployable"
+          order: "1"
+      providerName: "${u:providerDelete}"
+      suiteName: "${u:suiteDelete}"
+      instanceName: "${u:instanceDelete}"

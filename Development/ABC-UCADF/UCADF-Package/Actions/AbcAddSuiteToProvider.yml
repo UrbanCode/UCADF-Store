@@ -1,0 +1,27 @@
+# ===============================================================================
+# Adds a suite to a provider.
+#
+# Expected properties:
+# - envType
+# - providerName
+# - suiteName
+# ===============================================================================
+actions:
+  - action: UcAdfLoop
+    items: ${u:instancesPaths}
+    itemProperty: "instancesPath"
+    actions:
+      # Create the suite resource.
+      - action: UcdCreateGroupResource
+        resource: "${u:instancesPath}/${u:envType}/${u:providerName}/${u:suiteName}"
+        failIfExists: false
+        
+      # Team/role type for suite resource.
+      - action: UcdAddResourcesToTeams
+        resources:
+          - "${u:instancesPath}/${u:envType}/${u:providerName}/${u:suiteName}"
+        teams:
+          - team: "${u:suiteTeamNamePrefix} ${u:suiteName}"
+            subtype: "${u:resourceRoleTypeSuite}"
+        removeOthers: true
+ 

@@ -1,0 +1,98 @@
+# ===============================================================================
+# This actions file deletes the ABC-UCADF from an UrbanCode instance.
+# ===============================================================================
+
+# Initialize the properties.
+propertyFiles:
+  # The package-specific properties.
+  - fileName: "${u:packageDir}/Actions/AbcUcAdfActionProperties.yml"
+  
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+
+# Run the actions.
+actions:
+  # Delete the UCADF applications.
+  - action: UcdGetApplications
+    match: "^(ABC Management|ABC-UCD.*|ABC-UCADF.*|ABCUCADF.*)$"
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteApplication
+        application: "${u:item/name}"
+
+  # Delete the UCADF components.    
+  - action: UcdGetComponents
+    match: "^(ABC Management|ABC-UCADF.*|ABCUCADF.*)$"
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteComponent
+        component: "${u:item/name}"
+
+  # Delete the UCADF component templates.    
+  - action: UcdGetComponentTemplates
+    match: "^ABC-Template$"
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteComponentTemplate
+        componentTemplate: "${u:item/name}"
+  
+  # Delete the UCADF generic processes.  
+  - action: UcdGetGenericProcesses
+    match: "^ABC .*$"
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteGenericProcess
+        process: "${u:item/name}"
+
+  # Delete the UCADF top-level resource.    
+  - action: UcdDeleteResource
+    resource: "/ABC"
+
+  # Delete the UCADF test users.    
+  - action: UcdGetUsers
+    match: "^ABC.*"
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteUser
+        user: "${u:item/name}"
+
+  # Delete the UCADF test teams.
+  - action: UcdGetTeams
+    match: "^(ABC|ABC .*)$"
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteTeam
+        team: "${u:item/name}"
+    
+  # Delete the UCADF test roles.
+  - action: UcdGetRoles
+    match: "^ABC .*$"
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteRole
+        role: "${u:item/name}"
+        
+  # Delete the UCADF test security subtypes.
+  - action: UcdGetSecuritySubtypes
+    match: "^ABC .*$"
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteSecuritySubtype
+        subtype: "${u:item/name}"

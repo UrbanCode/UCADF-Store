@@ -1,0 +1,15 @@
+# ===============================================================================
+# This actions file runs the AbcValidateDeploy test.
+# ===============================================================================
+actions:
+  - action: AbcValidateDeploy
+    application: ""
+    environment: ""
+    snapshot: ""
+    requestor: ""
+    changeId: ""
+    compProcessRequestId: ""
+    appProcessRequestId: ""
+    
+  - action: UcAdfComment
+    comment: "This is a comment."
