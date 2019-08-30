@@ -1,0 +1,35 @@
+# ===============================================================================
+# Creates a provider by adding the resources to the resource tree.
+#
+# Expected properties:
+# - envType
+# - providerName
+# ===============================================================================
+actions:
+  - action: UcAdfLoop
+    items: ${u:instancesPaths}
+    itemProperty: "instancesPath"
+    actions:
+      # Create the provider resource.
+      - action: UcdCreateGroupResource
+        resource: "${u:instancesPath}/${u:envType}/${u:providerName}"
+        failIfExists: false
+
+      # Team/role type for instances deploy provider resource.
+      - action: UcdAddResourcesToTeams
+        when: 'Eval("${u:instancesPath}" == "${u:instancesDeployPath}")'
+        resources:
+          - "${u:instancesPath}/${u:envType}/${u:providerName}"
+        teams:
+          - team: "${u:ucAdfName}"
+            subtype: "${u:resourceRoleTypeProvider}"
+        removeOthers: true
+        
+      # Team/role type for instances List provider resource.
+      - action: UcdAddResourcesToTeams
+        when: 'Eval("${u:instancesPath}" == "${u:instancesListPath}")'
+        resources:
+          - "${u:instancesPath}/${u:envType}/${u:providerName}"
+        teams:
+          - team: "${u:ucAdfName}"
+        removeOthers: true

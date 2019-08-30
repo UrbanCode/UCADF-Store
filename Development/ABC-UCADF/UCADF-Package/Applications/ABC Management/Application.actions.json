@@ -1,0 +1,103 @@
+{
+  "actions" : [ {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Add Application Resources to Instance",
+    "requiredRole" : "ABC Suite Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Add Instance Resource to Suite",
+    "requiredRole" : "ABC Suite Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Add Provider Resource",
+    "requiredRole" : "ABC Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Add Suite Resource to Provider",
+    "requiredRole" : "ABC Suite Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Change Application Team Members",
+    "requiredRole" : "ABC Application Manager"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Change Suite Team Members",
+    "requiredRole" : "ABC Suite Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Create Application",
+    "requiredRole" : "ABC Application Manager"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Create Application Team",
+    "requiredRole" : "ABC Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Create Suite Team",
+    "requiredRole" : "ABC Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Delete ALL of a Provider's Information from UrbanCode",
+    "requiredRole" : "ABC Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Delete ALL of an Application's Information from UrbanCode",
+    "requiredRole" : "ABC Application Manager"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Delete ALL of this Application Team's Information from UrbanCode",
+    "requiredRole" : "ABC Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Delete ALL of this Suite Team's Information from UrbanCode",
+    "requiredRole" : "ABC Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Remove all of an Application's Information from an Instance",
+    "requiredRole" : "ABC Suite Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Remove all of an Instance's Information from a Suite",
+    "requiredRole" : "ABC Suite Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Remove all this Suite's Information from a Provider",
+    "requiredRole" : "ABC Suite Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Send Application Team Tokens",
+    "requiredRole" : "ABC Application Manager"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Send Suite Team Tokens",
+    "requiredRole" : "ABC Suite Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "Synchronize Group Members",
+    "requiredRole" : "ABC Administrator"
+  }, {
+    "action" : "UcdUpdateApplicationProcess",
+    "application" : "ABC Management",
+    "process" : "UCADF-Resync All Application Processes from Application Assembly",
+    "requiredRole" : "Administrator"
+  } ]
+}

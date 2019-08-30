@@ -1,0 +1,42 @@
+# ===============================================================================
+# This actions file deletes the UCADF-Core from an UrbanCode instance.
+# ===============================================================================
+
+# Initialize the properties.
+propertyFiles:
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+
+# Run the actions.
+actions:
+  # Delete the entiries created by the UCADF-Core.
+  - action: UcdDeleteComponent
+    component: "UCADF-Core-Package"
+
+  - action: UcdDeleteResource
+    resource: "/GenericAgents"
+
+  - action: UcdGetAgents
+    actionReturnPropertyName: "agents"
+    tag: "GenericAgent"
+  - action: UcAdfLoop
+    actionInfo: false
+    items: "${u:agents}"
+    actions:
+      - action: UcdRemoveTagsFromAgent
+        agent: "${u:item/name}"
+        tags:
+          - "GenericAgent"
+    
+  - action: UcdDeleteAgentPool
+    pool: "GenericAgentsPool"
+
+  - action: UcdDeleteTeam
+    team: "UC Support"
+
+  - action: UcdDeleteTeam
+    team: "Public"
+
+  - action: UcdDeleteRole
+    role: "Public Viewer"

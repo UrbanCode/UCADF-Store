@@ -1,0 +1,16 @@
+# ===============================================================================
+# Adds a suite to a provider.
+#
+# Expected properties:
+# - envType
+# - providerName
+# - suiteName
+# ===============================================================================
+actions:
+  - action: UcAdfLoop
+    items: ${u:instancesPaths}
+    itemProperty: "instancesPath"
+    actions:
+      # Remove the suite resource.
+      - action: UcdDeleteResource
+        resource: "${u:instancesPath}/${u:envType}/${u:providerName}/${u:suiteName}"

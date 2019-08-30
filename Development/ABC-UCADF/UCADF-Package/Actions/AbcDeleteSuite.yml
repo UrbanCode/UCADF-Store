@@ -1,0 +1,45 @@
+# ===============================================================================
+# Deletes a suite.
+#
+# Expected properties:
+# - suiteName
+# ===============================================================================
+actions:
+  # Set properties used by the action.
+  - action: UcAdfSetActionProperties
+    propertyValues:
+      suiteTeamName: "${u:suiteTeamNamePrefix} ${u:suiteName}"
+      suiteTeamEnvName: "${u:suiteTeamEnvPrefix} ${u:suiteName}"
+
+  # Add the Management team environment to the framework team so that it remains visible in the history after the owning team is deleted.
+  # Ignore not found in case this is subsequent time of running delete.
+  - action: UcdAddEnvironmentToTeams
+    application: "${u:ucAdfManagementApp}"
+    environment: "${u:suiteTeamEnvName}"
+    teams:
+      - team: "${u:ucAdfTeamName}"
+        subtype: "${u:environmentRoleTypeSuiteTeam}"
+    removeOthers: true
+    failIfNotFound: false
+    
+   # Determine how many entities are still owned by the suite team and don't allow deletion for teams still in use.
+  - action: UcdGetTeamResourceMappingsCount
+    team: "${u:suiteTeamName}"
+    regexExclude: ".*Agent.*"
+    failIfNotFound: false
+  - action: UcAdfThrowException
+    when: 'Eval(Integer.valueOf(${u:actionReturn}) > 1)'
+    message: "Team [${u:suiteTeamName}] cannot be deleted while it is still associated with ${u:actionReturn} UrbanCode resources."
+    
+  # Delete the SuiteTeam environment.
+  - action: UcdDeleteEnvironment
+    application: "${u:ucAdfManagementApp}"
+    environment: "${u:suiteTeamEnvName}"
+  
+  # Delete the suite team.
+  - action: UcdDeleteTeam
+    team: "${u:suiteTeamName}"
+
+  # Delete the suite team administrator user.
+  - action: UcdDeleteUser
+    user: "${u:suiteTeamName} Administrator"

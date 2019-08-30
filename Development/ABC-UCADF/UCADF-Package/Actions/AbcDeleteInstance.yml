@@ -1,0 +1,32 @@
+# ===============================================================================
+# Deletes an instance.
+#
+# Expected properties:
+# - envType
+# - providerName
+# - suiteName
+# - instanceName
+# ===============================================================================
+actions:
+  - action: UcAdfLoop
+    items: ${u:instancesPaths}
+    itemProperty: "instancesPath"
+    actions:
+      # Delete any application environments associated with the instance.
+      - action: UcAdfWhen
+        when: 'Eval("${u:instancesPath}" == "${u:instancesDeployPath}")'
+        actions:
+          # Find the application-level resources.
+          - action: UcdFindResources
+            parent: "${u:instancesPath}"
+            depth: 6
+          # Process each application-level resource.
+          - action: UcAdfLoop
+            items: ${u:actionReturn}
+            actions:
+              - action: UcdDeleteEnvironment
+                application: "${u:item/name}"
+                environment: "${u:envType} ${u:providerName} ${u:suiteName} ${u:instanceName}"
+      # Delete the instance resource.
+      - action: UcdDeleteResource
+        resource: "${u:instancesPath}/${u:envType}/${u:providerName}/${u:suiteName}/${u:instanceName}"

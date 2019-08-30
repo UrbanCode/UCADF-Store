@@ -1,0 +1,74 @@
+#============================================================================
+# Property values common to the ABC-UCADF actions.
+#============================================================================
+propertyValues:
+  # UCADF-level properties.
+  ucAdfName: "ABC"
+  ucAdfPackage: "ABC-UCADF-Package"
+  ucAdfManagementApp: "${u:ucAdfName} Management"
+  ucAdfManagementComponent: "${u:ucAdfName} Management"
+  ucAdfManagementPath: "/${u:ucAdfName}/Management"
+  ucAdfAppAssembly: "${u:ucAdfName}-UCDAssembly"
+
+  # Common paths.
+  listsPath: "/${u:ucAdfName}/Management/Lists"
+  instancesDeployPath: "/${u:ucAdfName}/Instances"
+  instancesListPath: "${u:listsPath}/Instances"
+  instancesPaths:
+    - "${u:instancesDeployPath}"
+    - "${u:instancesListPath}"
+
+  # UCD roles.
+  ucdRoleAdministrator: "Administrator"
+  
+  # UCADF roles.
+  ucAdfRoleAdministrator: "${u:ucAdfName} Administrator"
+  ucAdfRoleSuperuser: "${u:ucAdfName} Superuser"
+  ucAdfRoleViewer: "${u:ucAdfName} Viewer"
+
+  ucAdfRoleSuiteAdministrator: "${u:ucAdfName} Suite Administrator"
+  
+  ucAdfRoleAppBuilder: "${u:ucAdfName} Application Builder"
+  ucAdfRoleAppManager: "${u:ucAdfName} Application Manager"
+  ucAdfRoleAppDeployerProd: "${u:ucAdfName} Application Deployer-Test"
+  ucAdfRoleAppDeployerTest: "${u:ucAdfName} Application Deployer-Production"
+
+  # UCADF users.
+  ucAdfUserAdministrator: "${u:ucAdfName} Administrator"
+  
+  # Role types.
+  resourceRoleTypeApplication: "${u:ucAdfName} Application Resource"
+  resourceRoleTypeInstance: "${u:ucAdfName} Instance Resource"
+  resourceRoleTypeProvider: "${u:ucAdfName} Provider Resource"
+  resourceRoleTypeSuite: "${u:ucAdfName} Suite Resource"
+  environmentRoleTypeSuiteTeam: "${u:ucAdfName} SuiteTeam Environment"
+  environmentRoleTypeAppTeam: "${u:ucAdfName} AppTeam Environment"
+  environmentRoleTypeAppMgt: "${u:ucAdfName} AppMgt Environment"
+  environmentRoleTypeProduction: "${u:ucAdfName} Production Environment"
+  environmentRoleTypeProduction: "${u:ucAdfName} Test Environment"
+  
+  # UCADF team.
+  ucAdfTeamName: "${u:ucAdfName}"
+  
+  # Environment types.
+  envTypeProduction: "Production"
+  envTypeTest: "Test"
+  envTypes:
+    - "${u:envTypeProduction}"
+    - "${u:envTypeTest}"
+  
+  # Suite teams.
+  suiteTeamNamePrefix: "${u:ucAdfName} SuiteTeam"
+  suiteTeamEnvPrefix: "SuiteTeam"
+  suiteTeamRoles:
+    - "${u:ucAdfRoleSuiteAdministrator}"
+    - "${u:ucAdfRoleViewer}"
+ 
+  # Application teams.
+  appTeamNamePrefix: "${u:ucAdfName} AppTeam"
+  appTeamEnvPrefix: "AppTeam"
+  appTeamRoles:
+    - "${u:ucAdfRoleAppBuilder}"
+    - "${u:ucAdfRoleAppManager}"
+    - "${u:ucAdfRoleAppDeployerProd}"
+    - "${u:ucAdfRoleAppDeployerTest}"

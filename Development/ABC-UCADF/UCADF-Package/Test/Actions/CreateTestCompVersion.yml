@@ -1,0 +1,32 @@
+# ===============================================================================
+# Creates test suite users.
+#
+# Expected properties:
+# - compFullName
+# ===============================================================================
+actions:
+  # Generate a unique version name.
+  - action: UcAdfSetActionProperties
+    setStatic: true
+    propertyValues:
+      versionName: 'Eval(import java.text.SimpleDateFormat; new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()))'
+
+  # Create a component test version.
+  - action: UcdCreateVersion
+    component: "${u:compFullName}"
+    name: "${u:versionName}"
+    
+    # Add the component test version files.
+  - action: UcdAddVersionFiles
+    component: "${u:compFullName}"
+    version: "${u:versionName}"
+    base: "${u:ucAdfPackageDir}/Test/TestComponents/${u:compFullName}"
+    include:
+      - "**/*"
+      
+    # Add the component test version statuses.
+  - action: UcdAddVersionStatuses
+    component: "${u:compFullName}"
+    version: "${u:versionName}"
+    statuses:
+      - "Active"

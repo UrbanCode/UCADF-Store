@@ -1,0 +1,19 @@
+# ===============================================================================
+# This actions file runs a UCADF test.
+# ===============================================================================
+
+# Initialize the properties.
+propertyFiles:
+  # The package-specific properties.
+  - fileName: "${u:ucAdfPackageDir}/Actions/AbcUcAdfActionProperties.yml"
+  
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+  
+actions:
+  - action: UcAdfRunActionsFromFile
+    propertyValues:
+      suiteName: "ABCUCADFTESTSUITE1"
+      suiteDescription: ""
+    fileName: "${u:ucAdfPackageDir}/Actions/AbcCreateSuite.yml"

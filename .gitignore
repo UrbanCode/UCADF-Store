@@ -1,0 +1,11 @@
+/**/*.secure.properties
+/**/secure.properties
+/Instances/*
+!/Instances/example
+!/Instances/example/*.secure.properties
+!/Instances/README.md
+/Management/target
+/Packages/*
+!/Packages/README.md
+/Plugins/*
+!/Plugins/README.md

@@ -1,0 +1,413 @@
+# ===============================================================================
+# This actions file pushes the ABC-UCADF to an UrbanCode instance.
+# ===============================================================================
+
+# Initialize the properties.
+propertyFiles:
+  # The package-specific properties.
+  - fileName: "${u:packageDir}/Actions/AbcUcAdfActionProperties.yml"
+  
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+  
+  # The instance-package-specific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/ABC-UCADF-Package.secure.properties"
+
+# Run the actions.
+actions:
+  # ==================================================================================
+  # Run the security actions.
+  # ==================================================================================
+  - action: UcAdfRunActionsFromFile
+    fileName: "${u:packageDir}/Actions/AbcUcAdfSecurity.json"
+
+  # ==================================================================================
+  # Create the ABC-UCADF orchestration user account and token.
+  # ==================================================================================
+  # Create the UCADF orchestration user.
+  - action: UcdCreateUser
+    name: "${u:ucAdfOrchestrationUserId}"
+    password: "${u:ucAdfOrchestrationUserPw}"
+    actionReturnPropertyName: "userCreated"
+    failIfExists: false
+
+  # Create the UCADF orchestration user token.
+  - action: UcAdfWhen
+    when: "${u:userCreated}"
+    actions:
+      - action: UcdCreateAuthToken
+        user: "${u:ucAdfOrchestrationUserId}"
+        actionReturnPropertyName: "tokenReturn"
+        description: "Used for automation."
+      - action: UcAdfWhen
+        when: "${u:tokenReturn/created}"
+        actions:
+          # Save the UCADF Orchestration user token in the instance UCADF secure file.
+          # If for some reason this step fails then the orchestration user's token must be deleted before this can be run again.
+          - action: UcAdfUpdatePropertiesFile
+            fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/ABC-UCADF-Package.secure.properties"
+            propertyValues:
+              ucAdfOrchestrationToken: "${u:tokenReturn/token}"
+        
+  # ==================================================================================
+  # Create the ABC-UCADF teams.
+  # ==================================================================================
+  # Create up the UCADF Team.
+  - action: UcdCreateTeam
+    name: "ABC"
+    description: "ABC Team"
+    failIfExists: false
+    
+  # Set up the UCADF Team elevated privileges.
+  - action: UcdChangeTeamMembers
+    teamRoles:
+      - team: "ABC"
+        role: "ABC Administrator"
+    addUsers:
+      - "admin"
+      - "ABCOrchestration"
+    addGroups:
+      - "uc_support"
+
+  - action: UcdChangeTeamMembers
+    teamRoles:
+      - team: "ABC"
+        role: "ABC Application Manager"
+    addUsers:
+      - "admin"
+      - "ABCOrchestration"
+    addGroups:
+      - "uc_support"
+
+  - action: UcdChangeTeamMembers
+    teamRoles:
+      - team: "ABC"
+        role: "ABC Suite Administrator"
+    addUsers:
+      - "admin"
+      - "ABCOrchestration"
+    addGroups:
+      - "uc_support"
+
+  - action: UcdChangeTeamMembers
+    teamRoles:
+      - team: "ABC"
+        role: "ABC Superuser"
+    addUsers:
+      - "admin"
+      - "ABCOrchestration"
+    addGroups:
+      - "uc_support"
+
+  # Set up the UCADF viewer privileges.
+  - action: UcdChangeTeamMembers
+    teamRoles:
+      - team: "ABC"
+        role: "ABC Viewer"
+    addUsers:
+      - "admin"
+      - "ABCOrchestration"
+    addGroups:
+      - "uc_support"
+
+  - action: UcdChangeTeamMembers 
+    teamRoles:
+      - team: "ABC" 
+        role: "ABC Viewer" 
+    addGroups:
+      - "uc_support"
+
+  # Set up the Public team for the UCADF access.
+  - action: UcdChangeTeamMembers
+    teamRoles:
+      - team: "Public"
+        role: "Public Viewer"
+    addUsers:
+      - "admin"
+      - "ABCOrchestration"
+    addGroups:
+      - "uc_support"
+
+  # ==================================================================================
+  # Create the ABC-UCADF statuses.
+  # ==================================================================================
+  # Add version statuses.
+  - action: UcdCreateStatus 
+    type: "VERSION" 
+    name: "Active" 
+    color: "GREEN" 
+    failIfExists: false
+    
+  # Add snapshot statuses.
+  - action: UcdCreateStatus 
+    type: "SNAPSHOT" 
+    name: "Change Controls Valid-TEST" 
+    color: "ORANGE" 
+    description: "Default used by Change Controls Manager" 
+    failIfExists: false
+    
+  - action: UcdCreateStatus 
+    type: "SNAPSHOT" 
+    name: "Change Controls Valid-PROD" 
+    color: "RED" 
+    description: "Default used by Change Controls Manager" 
+    failIfExists: false
+  
+  # ==================================================================================
+  # Set the ABC-UCADF orchestration user account team preferences.
+  # This is done so that the entities created by the orchestration account won'tags
+  # have all of the teams added to them by default.
+  # ==================================================================================
+  - action: UcdSetUserTeamPreferences
+    ucdUserId: "${u:ucAdfOrchestrationUserId}"
+    ucdUserPw: "${u:ucAdfOrchestrationUserPw}"
+    defaultTeamMappingType: "DEFAULT_TEAM_MAPPINGS_SPECIFIC_TEAMS"
+    teamNames:
+      - "ABC"
+
+  # ==================================================================================
+  # Push the ABC Management application.
+  # ==================================================================================
+  - action: UcdImportApplication
+    fileName: "${u:packageDir}/Applications/ABC Management/Application.json"
+    appUpgradeType: "UPGRADE_IF_EXISTS"
+    compUpgradeType: "UPGRADE_IF_EXISTS"
+    compTempUpgradeType: "UPGRADE_IF_EXISTS"
+    genProcessUpgradeType: "UPGRADE_IF_EXISTS"
+    compMatch: "^(?!ABC-UCADF-Package)(ABC( |-).*)$"
+    compTempMatch: "^ABC( |-).*$"
+    genProcessMatch: "^(ABC$|ABC-.*|ABC .*)$"
+    envMatch: /^$/
+    removeCrypt: false
+
+  # Run additional actions to configure the application processes.
+  - action: UcAdfRunActionsFromFile
+    fileName: "${u:packageDir}/Applications/ABC Management/Application.actions.json"
+
+  # ==================================================================================
+  # Push the ABC-UCDAssembly application.
+  # ==================================================================================
+  - action: UcdImportApplication
+    fileName: "${u:packageDir}/Applications/ABC-UCDAssembly/Application.json"
+    appUpgradeType: "UPGRADE_IF_EXISTS"
+    compUpgradeType: "UPGRADE_IF_EXISTS"
+    compTempUpgradeType: "UPGRADE_IF_EXISTS"
+    genProcessUpgradeType: "UPGRADE_IF_EXISTS"
+    compMatch: "^ABC-UCDAssembly$"
+    compTempMatch: "^ABC-Template$"
+    genProcessMatch: "^$"
+    envMatch: /^$/
+    removeCrypt: false
+
+  - action: UcAdfRunActionsFromFile
+    fileName: "${u:packageDir}/Applications/ABC-UCDAssembly/Application.actions.json"
+
+  # ==================================================================================
+  # Run sync application processes.
+  # ==================================================================================
+  - action: UcAdfRunActionsFromFile
+    fileName: "${u:packageDir}/Actions/AbcSyncAppAssemblyProcesses.yml"
+
+  # ==================================================================================
+  # Set up the ABC-Template component template.
+  # ==================================================================================
+  # Add the component template to the UCADF team.
+  - action: UcdAddComponentTemplateToTeams
+    componentTemplate: "ABC-Template"
+    teams:
+      - team: "ABC"
+
+  # Set environment-specific template properties.
+  - action: UcdSetComponentTemplateProperties
+    componentTemplate: "ABC-Template"
+    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(Development|Test)$/)'
+    properties:
+      - name: "abcDeployFakeRun"
+        value: true
+        secure: false
+      - name: "abcActivateFakeRun"
+        value: true
+        secure: false
+      - name: "abcChangeFakeRun"
+        value: true
+        secure: false
+
+  - action: UcdSetComponentTemplateProperties
+    componentTemplate: "ABC-Template"
+    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(UAT|Production)$/)'
+    properties:
+      - name: "abcDeployFakeRun"
+        value: false
+        secure: false
+      - name: "abcActivateFakeRun"
+        value: false
+        secure: false
+      - name: "abcChangeFakeRun"
+        value: false
+        secure: false
+
+  # ==================================================================================
+  # Create component tags.
+  # ==================================================================================
+  - action: UcdCreateComponentTag
+    name: "ABC-Deployable"
+    color: "PURPLE"
+    component: "${u:ucAdfManagementApp}"
+    failIfExists: false
+    
+  - action: UcdCreateComponentTag
+    name: "ABC-Order-1"
+    color: "LIGHTPINK"
+    component: "${u:ucAdfManagementApp}"
+    failIfExists: false
+    
+  - action: UcdCreateComponentTag
+    name: "ABC-Order-2"
+    color: "PINK"
+    component: "${u:ucAdfManagementApp}"
+    failIfExists: false
+
+  # ==================================================================================
+  # Set up the resource tree.
+  # ==================================================================================
+  # Add Top-Level resources.
+  - action: UcdCreateGroupResource
+    resource: "/ABC"
+    failIfExists: false
+    
+  - action: UcdAddResourcesToTeams
+    resources:
+      - "/ABC"
+    teams:
+      - team: "ABC"
+    removeOthers: true
+ 
+  # Add Resource Tags
+  - action: UcdCreateResourceTag
+    name: "ABC-Management"
+    color: "BLUE2"
+    resource: "/ABC"
+    failIfExists: false
+    
+  # Add Instances Resource
+  - action: UcdCreateAgentPoolResource
+    resource: "/ABC/Instances"
+    pool: "GenericAgentsPool"
+    failIfExists: false
+    
+  - action: UcdAddResourcesToTeams
+    resources:
+      - "/ABC/Instances"
+    teams:
+      - team: "ABC"
+        subtype: "ABC Instances Resource"
+    removeOthers: true
+ 
+  - action: UcdCreateGroupResource
+    resource: "/ABC/Instances/Production"
+    failIfExists: false
+    
+  - action: UcdSetResourceProperties
+    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(Development|Test)$/)'
+    resource: "/ABC/Instances/Production"
+    properties:
+      - name: "abcActivateApprovalEnv"
+        value: true 
+        
+  - action: UcdCreateGroupResource
+    resource: "/ABC/Instances/Test"
+    failIfExists: false
+    
+  - action: UcdSetResourceProperties
+    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(Development|Test)$/)'
+    resource: "/ABC/Instances/Test"
+    properties: 
+      - name: "abcActivateApprovalEnv"
+        value: false
+
+  # Add Management Resources
+  - action: UcdCreateAgentPoolResource
+    resource: "/ABC/Management"
+    pool: "GenericAgentsPool"
+    failIfExists: false
+    
+  - action: UcdCreateGroupResource
+    resource: "/ABC/Management/Lists"
+    failIfExists: false
+    
+  - action: UcdCreateGroupResource
+    resource: "/ABC/Management/Lists/Instances"
+    failIfExists: false
+    
+  - action: UcdSetResourceProperties
+    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(Development|Test)$/)'
+    resource: "/ABC/Management/Lists/Instances"
+    properties: 
+      - name: "abcUtilImageName"
+        value: "MyImageName" 
+
+  - action: UcdCreateGroupResource
+    resource: "/ABC/Management/Lists/Instances/Production"
+    failIfExists: false
+    
+  - action: UcdCreateGroupResource
+    resource: "/ABC/Management/Lists/Instances/Test"
+    failIfExists: false
+    
+  - action: UcdCreateComponentResource
+    resource: "/ABC/Management/ABC Management"
+    component: "${u:ucAdfManagementApp}"
+    failIfExists: false
+    
+  - action: UcdAddTagsToResource
+    resource: "/ABC/Management"
+    tags:
+      - "ABC-Management"
+
+  # ==================================================================================
+  # Create the ABC Management environment.
+  # ==================================================================================
+  - action: UcdCreateEnvironment
+    application: "${u:ucAdfManagementApp}"
+    name: "ABC Management"
+    description: "This is not a real environment but rather a way to provide general UCD management functionality."
+    color: "BLUE"
+    failIfExists: false
+
+  - action: UcdAddEnvironmentToTeams
+    application: "${u:ucAdfManagementApp}"
+    environment: "ABC Management"
+    removeOthers: true
+    teams:
+      - team: "ABC"
+        subtype: "ABC Management Environment"
+
+  - action: UcdAddEnvironmentBaseResources
+    application: "${u:ucAdfManagementApp}"
+    environment: "ABC Management"
+    resources:
+      - "/ABC/Management"
+
+  # Set Up the ABC-Template Service Accounts
+  - action: UcdSetComponentTemplateProperties
+    componentTemplate: "ABC-Template"
+    properties:
+      - name: "ucAdfAdminToken"
+        value: "${u:ucdAuthToken}"
+        secure: true
+      - name: "abcOrchestrationToken"
+        value: "${u:ucAdfOrchestrationToken}"
+        secure: true
+      - name: "ucAdfEmailUserId"
+        value: "${u:ucdEmailUserId}"
+        secure: true
+      - name: "ucAdfEmailUserPw"
+        value: "${u:ucdEmailUserPw}"
+        secure: true
+
+  #==================================================================================
+  # Push the ABC-UCADF-Package to the target instance.
+  #==================================================================================
+  - action: UcAdfRunActionsFromFile
+    fileName: "${u:packageDir}/Actions/AbcUcAdfPushArtifacts.yml"

@@ -1,0 +1,1309 @@
+{
+  "actions" : [ {
+    "action" : "UcdCreateRole",
+    "name" : "ABC Administrator",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateRole",
+    "name" : "ABC Application Builder",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateRole",
+    "name" : "ABC Application Deployer-Production",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateRole",
+    "name" : "ABC Application Deployer-Test",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateRole",
+    "name" : "ABC Application Manager",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateRole",
+    "name" : "ABC Suite Administrator",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateRole",
+    "name" : "ABC Superuser",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateRole",
+    "name" : "ABC Viewer",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC AdminOnly Application",
+    "description" : "",
+    "type" : "Application",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC AppMgt Environment",
+    "description" : "",
+    "type" : "Environment",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC AppTeam Environment",
+    "description" : "",
+    "type" : "Environment",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Application Resource",
+    "description" : "",
+    "type" : "Resource",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Instance Resource",
+    "description" : "",
+    "type" : "Resource",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Instances Resource",
+    "description" : "",
+    "type" : "Resource",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Management Application",
+    "description" : "",
+    "type" : "Application",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Management Component",
+    "description" : "",
+    "type" : "Component",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Management Environment",
+    "description" : "",
+    "type" : "Environment",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Production Environment",
+    "description" : "",
+    "type" : "Environment",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Provider Resource",
+    "description" : "",
+    "type" : "Resource",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Research Environment",
+    "description" : "",
+    "type" : "Environment",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Suite Resource",
+    "description" : "",
+    "type" : "Resource",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC SuiteTeam Environment",
+    "description" : "",
+    "type" : "Environment",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateSecuritySubtype",
+    "name" : "ABC Test Environment",
+    "description" : "",
+    "type" : "Environment",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Agents", "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Manage Properties", "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Application",
+    "subtype" : "ABC Management Application",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Cloud Connection",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Cloud Connections" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Manage Properties", "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Component",
+    "subtype" : "ABC Management Component",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Environment",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Environment",
+    "subtype" : "ABC AppMgt Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Environment",
+    "subtype" : "ABC AppTeam Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Environment",
+    "subtype" : "ABC Management Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Environment",
+    "subtype" : "ABC Production Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Environment",
+    "subtype" : "ABC Research Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Environment",
+    "subtype" : "ABC SuiteTeam Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Environment",
+    "subtype" : "ABC Test Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute Processes", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Application Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Instance Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Instances Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Provider Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Suite Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Resource Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Resource Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Administrator",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Agents", "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Agent Relay",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Relays" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Manage Properties", "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Application",
+    "subtype" : "ABC Management Application",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Manage Properties", "Manage Versions", "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Component",
+    "subtype" : "ABC Management Component",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Environment",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Environment",
+    "subtype" : "ABC AppMgt Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Environment",
+    "subtype" : "ABC Management Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Environment",
+    "subtype" : "ABC Production Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Environment",
+    "subtype" : "ABC Research Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Environment",
+    "subtype" : "ABC Test Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute Processes", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Resource",
+    "subtype" : "ABC Application Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Resource",
+    "subtype" : "ABC Instance Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Resource",
+    "subtype" : "ABC Instances Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Resource",
+    "subtype" : "ABC Provider Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Resource",
+    "subtype" : "ABC Suite Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Agents", "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Agent Relay",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Relays" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Environment",
+    "subtype" : "ABC Production Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute Processes", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Resource",
+    "subtype" : "ABC Application Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Resource",
+    "subtype" : "ABC Instance Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Resource",
+    "subtype" : "ABC Instances Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Resource",
+    "subtype" : "ABC Provider Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Resource",
+    "subtype" : "ABC Suite Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Production",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Agents", "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Agent Relay",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Relays" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Environment",
+    "subtype" : "ABC Test Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute Processes", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Resource",
+    "subtype" : "ABC Application Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Resource",
+    "subtype" : "ABC Instance Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Resource",
+    "subtype" : "ABC Instances Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Resource",
+    "subtype" : "ABC Provider Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Resource",
+    "subtype" : "ABC Suite Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Deployer-Test",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Agents", "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Manage Properties", "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Application",
+    "subtype" : "ABC Management Application",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Cloud Connection",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Cloud Connections" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Manage Properties", "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Component",
+    "subtype" : "ABC Management Component",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Environment",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Environment",
+    "subtype" : "ABC AppMgt Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Environment",
+    "subtype" : "ABC AppTeam Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Environment",
+    "subtype" : "ABC Management Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Environment",
+    "subtype" : "ABC Production Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Environment",
+    "subtype" : "ABC Research Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Environment",
+    "subtype" : "ABC Test Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute Processes", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Resource",
+    "subtype" : "ABC Application Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Resource",
+    "subtype" : "ABC Instance Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Resource",
+    "subtype" : "ABC Instances Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Resource",
+    "subtype" : "ABC Provider Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Resource",
+    "subtype" : "ABC Suite Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Resource Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Resource Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Manager",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Agents", "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Agent Relay",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Relays" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Application",
+    "subtype" : "ABC Management Application",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Environment",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Environment",
+    "subtype" : "ABC SuiteTeam Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute Processes", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resources", "Execute on Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Application Resource",
+    "removeOthers" : false,
+    "permissions" : [ "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Instance Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Instances Resource",
+    "removeOthers" : false,
+    "permissions" : [ "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Provider Resource",
+    "removeOthers" : false,
+    "permissions" : [ "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Resource",
+    "subtype" : "ABC Suite Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Manage Properties", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Suite Administrator",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Add to Agent Pool", "Create Resources", "Delete", "Edit Basic Settings", "Execute on Agents", "Manage Impersonation", "Manage Properties", "Manage Teams", "Manage Version Imports", "Upgrade Agents", "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Agent Pools", "Create Resources", "Delete", "Edit Basic Settings", "Manage Pool Members", "Manage Teams", "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Applications", "Delete", "Delete Snapshots", "Edit Basic Settings", "Manage Blueprints", "Manage Components", "Manage Environments", "Manage Processes", "Manage Properties", "Manage Snapshots", "Manage Teams", "Run Component Processes", "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Application",
+    "subtype" : "ABC AdminOnly Application",
+    "removeOthers" : false,
+    "permissions" : [ "Create Applications", "Delete", "Delete Snapshots", "Edit Basic Settings", "Manage Blueprints", "Manage Components", "Manage Environments", "Manage Processes", "Manage Properties", "Manage Snapshots", "Manage Teams", "Run Component Processes", "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Application",
+    "subtype" : "ABC Management Application",
+    "removeOthers" : false,
+    "permissions" : [ "Create Applications", "Delete", "Delete Snapshots", "Edit Basic Settings", "Manage Blueprints", "Manage Components", "Manage Environments", "Manage Processes", "Manage Properties", "Manage Snapshots", "Manage Teams", "Run Component Processes", "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Cloud Connection",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Cloud Connections", "Delete", "Edit Basic Settings", "Manage Teams", "View Cloud Connections" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Components", "Create Components From Template", "Delete", "Edit Basic Settings", "Edit Components", "Manage Configuration Templates", "Manage Processes", "Manage Properties", "Manage Teams", "Manage Versions", "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Component",
+    "subtype" : "ABC Management Component",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Component Templates", "Delete", "Edit Basic Settings", "Manage Processes", "Manage Properties", "Manage Teams", "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Environment",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Environment",
+    "subtype" : "ABC AppMgt Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Environment",
+    "subtype" : "ABC AppTeam Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Environment",
+    "subtype" : "ABC Management Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Environment",
+    "subtype" : "ABC Production Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Environment",
+    "subtype" : "ABC Research Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Environment",
+    "subtype" : "ABC SuiteTeam Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Environment",
+    "subtype" : "ABC Test Environment",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Processes", "Delete", "Edit Basic Settings", "Execute Processes", "Manage Properties", "Manage Teams", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Resource",
+    "subtype" : "ABC Application Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Resource",
+    "subtype" : "ABC Instance Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Resource",
+    "subtype" : "ABC Instances Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Resource",
+    "subtype" : "ABC Provider Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Resource",
+    "subtype" : "ABC Suite Resource",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Resource Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resource Templates", "Delete", "Edit Basic Settings", "Manage Resources", "Manage Teams" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Processes Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Agent Relay",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Relays" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Application",
+    "subtype" : "ABC Management Application",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Component",
+    "subtype" : "ABC Management Component",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Environment",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Environment",
+    "subtype" : "ABC AppMgt Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Environment",
+    "subtype" : "ABC AppTeam Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Environment",
+    "subtype" : "ABC Management Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Environment",
+    "subtype" : "ABC Production Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Environment",
+    "subtype" : "ABC Research Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Environment",
+    "subtype" : "ABC SuiteTeam Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Environment",
+    "subtype" : "ABC Test Environment",
+    "removeOthers" : false,
+    "permissions" : [ "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute Processes", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Resource",
+    "subtype" : "ABC Application Resource",
+    "removeOthers" : false,
+    "permissions" : [ "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Resource",
+    "subtype" : "ABC Instance Resource",
+    "removeOthers" : false,
+    "permissions" : [ "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Resource",
+    "subtype" : "ABC Instances Resource",
+    "removeOthers" : false,
+    "permissions" : [ "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Resource",
+    "subtype" : "ABC Provider Resource",
+    "removeOthers" : false,
+    "permissions" : [ "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Resource",
+    "subtype" : "ABC Suite Resource",
+    "removeOthers" : false,
+    "permissions" : [ "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Viewer",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
+  } ]
+}

@@ -1,0 +1,16 @@
+# ===============================================================================
+# This actions file exports the UCADF-Core security initialialization actions from an UrbanCode instance.
+# ===============================================================================
+
+# Initialize the properties.
+propertyFiles:
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+  
+# Run the actions.
+actions:
+  # Export the security actions.
+  - action: UcdWriteSecurityRolesPermissions
+    match: "^Administrator$|^Public Viewer$"
+    fileName: "${u:UCADF_STORE}/Management/Actions/UcAdfCoreSecurity.json"

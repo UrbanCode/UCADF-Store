@@ -1,0 +1,74 @@
+# ===============================================================================
+# This actions file pushes the UCADF-Core-Package artifacts to an UrbanCode instance as a component version.
+# It is run by the initialize actions but can also be run separately to update the
+# package version without re-running the other configuration actions done by the initialize.
+# ===============================================================================
+
+# Property values.
+propertyFiles:
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+
+# Run the actions.
+actions:
+  # ==================================================================================
+  # Validate the required properties exist.
+  # ==================================================================================
+  - action: UcAdfComment
+    comment: "packageDir=%s"
+    values:
+      - "${u:packageDir}"
+
+  # ==================================================================================
+  # If no package version was specified then generate one.
+  # ==================================================================================
+  - action: UcAdfWhen
+    when: 'Eval("${u?:packageVersion}".equals(""))'
+    actions:
+      - action: UcAdfComment
+        actionInfo: false
+        comment: "!!! No value for packageVersion provided so generating one. !!!"
+      - action: UcAdfSetActionProperties
+        setStatic: true
+        propertyValues:
+          packageVersion: 'Eval(import java.text.SimpleDateFormat; new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()))'
+      
+  # ==================================================================================
+  # Create the UCADF-Core-Package component version on the target instance.
+  # ==================================================================================
+  # Create the component.
+  - action: UcdCreateComponent
+    name: "UCADF-Core-Package"
+    failIfExists: false
+
+  # Add the component to the Public team.    
+  - action: UcdAddComponentToTeams
+    component: "UCADF-Core-Package"
+    teams:
+      - team: "Public"
+
+  # Create the component version.
+  - action: UcdCreateVersion
+    component: "UCADF-Core-Package"
+    name: "${u:packageVersion}"
+    actionReturnPropertyName: "versionCreated"
+    failIfExists: false
+    
+  # If the version was created then add files to the version.
+  - action: UcdAddVersionFiles
+    when: 'Eval("${u:versionCreated}" == "true")'
+    component: "UCADF-Core-Package"
+    version: "${u:packageVersion}"
+    base: "${u:packageDir}"
+    include:
+      - "**/*"
+      
+  # ==================================================================================
+  # Configure the UCADF-Core-Package system property on the target instance.
+  # ==================================================================================
+  - action: UcdSetSystemProperties
+    systemProperties:
+      - name: "UCADF-Core-Package-Versions"
+        value: "UCADF-Core-Package:${u:packageVersion}"
+        isSecure: false

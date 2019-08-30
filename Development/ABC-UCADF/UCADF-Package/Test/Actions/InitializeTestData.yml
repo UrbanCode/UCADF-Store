@@ -1,0 +1,174 @@
+# ============================================================================
+# Initialize the UCADF test data.
+# ============================================================================
+# The actions to run.
+actions:
+  # ============================================================================
+  # Delete existing test data.
+  # ============================================================================
+  # Remove applications from instances.
+  - action: UcAdfLoop
+    items: ${u:testApps}
+    itemProperty: "ucdApplication"
+    actions:
+      # Set application-level property values used by the other actions.
+      - action: UcAdfSetActionProperties
+        propertyValues:
+          application: ${u:ucdApplication/name}
+      - action: UcAdfLoop
+        items: ${u:envTypes}
+        itemProperty: "envType"
+        actions:
+        - action: UcAdfRunActionsFromFile
+          propertyValues:
+            providerName: "${u:ucdApplication/providerName}"
+            suiteName: "${u:ucdApplication/suiteName}"
+            instanceName: "${u:ucdApplication/instanceName}"
+          fileName: "${u:ucAdfPackageDir}/Actions/AbcRemoveAppFromInstance.yml"
+  
+  # Delete application components.
+  - action: UcAdfLoop
+    items: ${u:testApps}
+    itemProperty: "ucdApplication"
+    actions:
+      - action: UcAdfLoop
+        items: ${u:ucdApplication/components}
+        itemProperty: "comp"
+        actions:
+          - action: UcAdfRunActionsFromFile
+            propertyValues:
+              application: ${u:ucdApplication/name}
+              compFullName: "${u:application}-${u:comp/name}"
+            fileName: "${u:ucAdfPackageDir}/Actions/AbcDeleteAppComponent.yml"
+  
+  # Delete applications.
+  - action: UcAdfLoop
+    items: ${u:testApps}
+    itemProperty: "ucdApplication"
+    actions:
+      - action: UcAdfRunActionsFromFile
+        propertyValues:
+          application: ${u:ucdApplication/name}
+        fileName: "${u:ucAdfPackageDir}/Actions/AbcDeleteApp.yml"
+  
+  # Delete application teams.
+  - action: UcAdfLoop
+    items: ${u:appTeams}
+    itemProperty: "appTeamBaseName"
+    actions:
+      - action: UcAdfRunActionsFromFile
+        fileName: "${u:ucAdfPackageDir}/Actions/AbcDeleteAppTeam.yml"
+  
+  # Delete instances.
+  - action: UcAdfLoop
+    items: ${u:envTypes}
+    itemProperty: "envType"
+    actions:
+      - action: UcAdfLoop
+        items: ${u:suites}
+        itemProperty: "suiteName"
+        actions:
+          - action: UcAdfLoop
+            items: ${u:providers}
+            itemProperty: "providerName"
+            actions:
+              - action: UcAdfLoop
+                items: ${u:instances}
+                itemProperty: "instanceName"
+                actions:
+                  - action: UcAdfRunActionsFromFile
+                    fileName: "${u:ucAdfPackageDir}/Actions/AbcDeleteInstance.yml"
+  
+  # Remove suites from providers.
+  - action: UcAdfLoop
+    items: ${u:envTypes}
+    itemProperty: "envType"
+    actions:
+      - action: UcAdfLoop
+        items: ${u:suites}
+        itemProperty: "suiteName"
+        actions:
+          - action: UcAdfLoop
+            items: ${u:providers}
+            itemProperty: "providerName"
+            actions:
+              - action: UcAdfRunActionsFromFile
+                fileName: "${u:ucAdfPackageDir}/Actions/AbcRemoveSuiteFromProvider.yml"
+  
+  # Delete providers.
+  - action: UcAdfLoop
+    items: ${u:envTypes}
+    itemProperty: "envType"
+    actions:
+      - action: UcAdfLoop
+        items: ${u:providers}
+        itemProperty: "providerName"
+        actions:
+          - action: UcAdfRunActionsFromFile
+            fileName: "${u:ucAdfPackageDir}/Actions/AbcDeleteProvider.yml"
+  
+  # Delete suite teams.
+  - action: UcAdfLoop
+    items: ${u:suites}
+    itemProperty: "suiteName"
+    actions:
+      - action: UcAdfRunActionsFromFile
+        fileName: "${u:ucAdfPackageDir}/Actions/AbcDeleteSuite.yml"
+
+  # Delete the test application team users.
+  - action: UcAdfLoop
+    items: ${u:appTeams}
+    itemProperty: "appTeamName"
+    actions:
+      - action: UcAdfLoop
+        items: ${u:appTeamRoles}
+        itemProperty: "appTeamRole"
+        actions:
+          # Delete the test application team user for the test application team role.
+          - action: UcdDeleteUser
+            user: 'Eval("${u:appTeamNamePrefix} ${u:appTeamName} ${u:appTeamRole}".replaceAll(" ", "_").toUpperCase())'
+            
+  # Delete the test suite users.
+  - action: UcAdfLoop
+    items: ${u:suites}
+    itemProperty: "suiteName"
+    actions:
+      - action: UcAdfLoop
+        items: ${u:suiteTeamRoles}
+        itemProperty: "suiteTeamRole"
+        actions:
+          # Delete the test suite user for the test suite role.
+          - action: UcdDeleteUser
+            user: 'Eval("${u:suiteTeamNamePrefix} ${u:suiteName} ${u:suiteTeamRole}".replaceAll(" ", "_").toUpperCase())'
+            
+  # Delete the UCADF Management test users.
+  - action: UcAdfLoop
+    items: ${u:fakeUsers}
+    itemProperty: "user"
+    actions:
+      - action: UcdDeleteUser
+        user: "${u:user}"
+        
+  #============================================================================
+  # Create the UCADF Management test users.
+  #============================================================================
+  - action: UcAdfLoop
+    items: ${u:fakeUsers}
+    itemProperty: "user"
+    actions:
+      - action: UcdCreateUser
+        name: "${u:user}"
+        password: ""
+        failIfExists: false
+
+  # Add the UCADF administrator fake user to the appropriate team roles.
+  - action: UcdChangeTeamMembers
+    addUsers:
+      - "${u:fakeAdministrator}"
+    teamRoles:
+      - team: "${u:ucAdfName}"
+        role: "${u:ucAdfRoleAdministrator}"
+      - team: "${u:ucAdfName}"
+        role: "${u:ucAdfRoleViewer}"
+      - team: "Public"
+        role: "Public Viewer"

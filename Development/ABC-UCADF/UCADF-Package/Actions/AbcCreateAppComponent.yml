@@ -1,0 +1,43 @@
+# ===============================================================================
+# Creates an application component.
+#
+# Expected properties:
+# - application
+# - compFullName
+# - compType
+# - compOrder
+# (TBD) compDescription
+# ===============================================================================
+actions:
+  - action: UcdGetApplication
+    application: "${u:application}"
+    actionReturnPropertyName: "ucdApplication"
+
+  - action: UcdCreateComponent
+    name: "${u:compFullName}"
+    template: "${u:ucAdfName}-Template"
+    failIfExists: false
+
+  # Use the application's first team name as the component's team name.
+  - action: UcdAddComponentToTeams
+    component: "${u:compFullName}"
+    teams:
+      - team: "${u:ucdApplication/extendedSecurity/teams/0/teamName}"
+    removeOthers: true
+
+  - action: UcdSetComponentProperties
+    component: "${u:compFullName}"
+    properties:
+      - name: "ucAdfComponentType"
+        value: "${u:compType}"
+
+  - action: UcdAddTagsToComponent
+    when: 'Eval("${u:compOrder}" != "")'
+    component: "${u:compFullName}"
+    tags:
+      - "${u:ucAdfName}-Order-${u:compOrder}"
+      - "${u:ucAdfName}-${u:compType}"
+
+  - action: UcdAddComponentToApplication
+    application: "${u:application}"
+    component: "${u:compFullName}"

@@ -1,0 +1,149 @@
+# ===============================================================================
+# Creates an application team.
+#
+# Expected properties:
+# - appTeamBaseName
+# (TBD) appTeamDescription
+# ===============================================================================
+actions:
+  # Set properties used by the action.
+  - action: UcAdfSetActionProperties
+    propertyValues:
+      appTeamName: "${u:appTeamNamePrefix} ${u:appTeamBaseName}"
+      appTeamEnvName: "${u:appTeamEnvPrefix} ${u:appTeamBaseName}"
+      
+  # Create the application team.
+  - action: UcdCreateTeam
+    name: "${u:appTeamName}"
+    failIfExists: false
+
+  # Copy the ABC/Administrator role members to the AppTeam/Administrator role.
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucdRoleAdministrator}"
+    toTeam: "${u:appTeamName}" 
+    toRole: "${u:ucdRoleAdministrator}"
+    
+  # Copy the ABC/Administrator role members to the AppTeam/ABC Administrator role.
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleAdministrator}"
+    toTeam: "${u:appTeamName}" 
+    toRole: "${u:ucAdfRoleAdministrator}"
+    
+  # Copy the ABC/ABC Application Manager role members to the AppTeam/ABC Application Manager role.
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleAppManager}"
+    toTeam: "${u:appTeamName}" 
+    toRole: "${u:ucAdfRoleAppManager}"
+    
+  # Copy the ABC/ABC Superuser role members to the AppTeam/ABC Superuser role.
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleSuperuser}"
+    toTeam: "${u:appTeamName}" 
+    toRole: "${u:ucAdfRoleSuperuser}"
+    
+  # Copy the ABC/Administrator role members to the AppTeam/ABC Application Deployer-Production role.
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleAdministrator}"
+    toTeam: "${u:appTeamName}" 
+    toRole: "${u:ucAdfRoleAppDeployerProd}"
+    
+  # Copy the ABC/Administrator role members to the AppTeam/ABC Application Deployer-Test role.
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleAdministrator}"
+    toTeam: "${u:appTeamName}" 
+    toRole: "${u:ucAdfRoleAppDeployerTest}"
+    
+  # Copy the ABC/Administrator role members to the AppTeam/ABC Viewer role.
+  - action: UcdCopyTeamMembers
+    fromTeam: "${u:ucAdfName}"
+    fromRole: "${u:ucAdfRoleAdministrator}"
+    toTeam: "${u:appTeamName}" 
+    toRole: "${u:ucAdfRoleViewer}"
+    
+  # Create the AppTeam environment.
+  - action: UcdCreateEnvironment
+    application: "${u:ucAdfManagementApp}"
+    name: "${u:appTeamEnvName}"
+    color: "DARKGREEN"
+    failIfExists: false
+    
+  - action: UcdAddEnvironmentToTeams
+    application: "${u:ucAdfManagementApp}"
+    environment: "${u:appTeamEnvName}"
+    teams:
+      - team: "${u:appTeamName}"
+        subtype: "${u:environmentRoleTypeAppTeam}"
+    removeOthers: true
+    
+  - action: UcdSetEnvironmentProperties
+    application: "${u:ucAdfManagementApp}"
+    environment: "${u:appTeamEnvName}"
+    properties:
+      - name: "abcTeamBaseName"
+        value: "${u:appTeamBaseName}"
+      - name: "abcTeamName"
+        value: "${u:appTeamName}"
+      - name: "abcTeamType"
+        value: "AppTeam"
+        
+  - action: UcdAddEnvironmentBaseResources
+    application: "${u:ucAdfManagementApp}"
+    environment: "${u:appTeamEnvName}"
+    resources:
+      - "${u:ucAdfManagementPath}"
+
+  # ==================================================================================
+  # Create the application team builder user and token.
+  # ==================================================================================
+  # Create the AppTeam Builder user.
+  - action: UcdCreateUser
+    name: "${u:appTeamName} Builder"
+    password: ""
+    actionReturnPropertyName: "userCreated"
+    failIfExists: false
+  
+  # If the user was created then create the user token.
+  - action: UcAdfWhen
+    when: "${u:userCreated}"
+    actions:
+      # Create a token for the AppTeam token user.
+      - action: UcdCreateAuthToken
+        user: "${u:appTeamName} Builder"
+        description: "Used for automation."
+        actionReturnPropertyName: "tokenReturn"
+      # If the token was created then save the it as an environment property.
+      - action: UcAdfWhen
+        when: "${u:tokenReturn/created}"
+        actions:
+          # Save the AppTeam user token as an environment property.
+          - action: UcdSetEnvironmentProperties
+            application: "${u:ucAdfManagementApp}"
+            environment: "${u:appTeamEnvName}"
+            properties:
+              - name: "abcAppBuilderAuthToken"
+                value: "${u:tokenReturn/token}"
+                secure: true
+    
+  # Add the builder user to the necessary roles.
+  - action: UcdChangeTeamMembers
+    addUsers:
+      - "${u:appTeamName} Builder"
+    teamRoles:
+      - team: "${u:ucAdfName}"
+        role: "${u:ucAdfRoleAppBuilder}"
+      - team: "${u:appTeamName}"
+        role: "${u:ucAdfRoleAppBuilder}"
+      - team: "${u:appTeamName}"
+        role: "${u:ucAdfRoleAppDeployerProd}"
+      - team: "${u:appTeamName}"
+        role: "${u:ucAdfRoleAppDeployerTest}"
+      - team: "${u:ucAdfName}"
+        role: "${u:ucAdfRoleViewer}"
+      - team: "Public"
+        role: "Public Viewer"

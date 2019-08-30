@@ -1,0 +1,240 @@
+# ===============================================================================
+# This actions file runs the UCADF process tests.
+# ===============================================================================
+
+# Initialize the properties.
+propertyFiles:
+  # The package-specific properties.
+  - fileName: "${u:ucAdfPackageDir}/Actions/AbcUcAdfActionProperties.yml"
+  
+  # The instance-spectific properties.
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+  
+  # The test-spectific properties.
+  - fileName: "${u:ucAdfPackageDir}/Test/UcAdfTestProperties.yml"
+
+#============================================================================
+# The actions to run.
+#============================================================================
+actions:
+  #============================================================================
+  # Cancel all matching running processes.
+  #============================================================================
+  - action: UcdCancelProcesses
+    match: "^${u:ucAdfName}.*"
+
+  # ============================================================================
+  # Initialize the test data.
+  # ============================================================================
+  - action: UcAdfRunActionsFromFile
+    fileName: "${u:ucAdfPackageDir}/Test/Actions/InitializeTestData.yml"
+
+  #============================================================================
+  # Create the test providers.
+  #============================================================================
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:envTypes}
+    itemProperty: "envType"
+    actions:
+      - action: UcAdfLoop
+        actionInfo: false
+        items: ${u:providers}
+        itemProperty: "providerName"
+        actions:
+          - action: UcdRunApplicationProcess
+            application: "ABC Management"
+            environment: "ABC Management"
+            process: "Add Provider Resource"
+            properties:
+              - name: "abcEnvType"
+                value: "${u:envType}"
+              - name: "abcProviderName"
+                value: "${u:providerName}"
+
+  #============================================================================
+  # Create the test suites.
+  #============================================================================
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:suites}
+    itemProperty: "suiteName"
+    actions:
+      # Create the test suite.
+      - action: UcdRunApplicationProcess
+        application: "ABC Management"
+        environment: "ABC Management"
+        process: "Create Suite Team"
+        properties:
+          - name: "abcSuiteName"
+            value: "${u:suiteName}"
+          - name: "abcSuiteDescription"
+            value: ""
+      # Create the test suite users.
+      - action: UcAdfRunActionsFromFile
+        fileName: "${u:ucAdfPackageDir}/Test/Actions/CreateTestSuiteUsers.yml"
+              
+  #============================================================================
+  # Add the test suites and instances to the test providers.
+  #============================================================================
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:envTypes}
+    itemProperty: "envType"
+    actions:
+      - action: UcAdfLoop
+        actionInfo: false
+        items: ${u:suites}
+        itemProperty: "suiteName"
+        actions:
+          - action: UcAdfLoop
+            actionInfo: false
+            items: ${u:providers}
+            itemProperty: "providerName"
+            actions:
+              - action: UcdRunApplicationProcess
+                application: "ABC Management"
+                environment: "${u:suiteTeamEnvPrefix} ${u:suiteName}"
+                process: "Add Suite Resource to Provider"
+                properties:
+                  - name: "abcEnvType"
+                    value: "${u:envType}"
+                  - name: "abcProviderName"
+                    value: "${u:providerName}"
+              - action: UcAdfLoop
+                actionInfo: false
+                items: ${u:instances}
+                itemProperty: "instanceName"
+                actions:
+                  - action: UcdRunApplicationProcess
+                    application: "ABC Management"
+                    environment: "${u:suiteTeamEnvPrefix} ${u:suiteName}"
+                    process: "Add Instance Resource to Suite"
+                    properties:
+                      - name: "abcEnvType"
+                        value: "${u:envType}"
+                      - name: "abcProviderName"
+                        value: "${u:providerName}"
+                      - name: "abcInstanceName"
+                        value: "${u:instanceName}"
+                      
+  #============================================================================
+  # Create the test application teams.
+  #============================================================================
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:appTeams}
+    itemProperty: "appTeamBaseName"
+    actions:
+      # Create the test application team.
+      - action: UcdRunApplicationProcess
+        application: "ABC Management"
+        environment: "ABC Management"
+        process: "Create Application Team"
+        properties:
+          - name: "abcTeamName"
+            value: "${u:appTeamBaseName}"
+          - name: "abcTeamDesc"
+            value: ""
+      # Create the test application team users.
+      - action: UcAdfRunActionsFromFile
+        fileName: "${u:ucAdfPackageDir}/Test/Actions/CreateTestAppTeamUsers.yml"
+          
+  #============================================================================
+  # Create the test applications.
+  #============================================================================
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:testApps}
+    itemProperty: "app"
+    actions:
+      - action: UcdRunApplicationProcess
+        application: "ABC Management"
+        environment: "${u:appTeamEnvPrefix} ${u:app/team}"
+        process: "Create Application"
+        properties:
+          - name: "abcAppName"
+            value: "${u:app/name}"
+          - name: "abcAppDesc"
+            value: ""
+  
+  #============================================================================
+  # Create the test components.
+  #============================================================================
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:testApps}
+    itemProperty: "app"
+    actions:
+      # Process the application components.
+      - action: UcAdfLoop
+        actionInfo: false
+        items: ${u:app/components}
+        itemProperty: "comp"
+        actions:
+          # Create the test component.
+          - action: UcdRunApplicationProcess
+            application: "${u:app/name}"
+            environment: "Management"
+            process: "Create Application Component"
+            properties:
+              - name: "abcCompName"
+                value: "${u:comp/name}"
+              - name: "abcCompDesc"
+                value: ""
+              - name: "abcCompOrder"
+                value: ${u:comp/order}
+          # Create the test component version.
+          - action: UcAdfRunActionsFromFile
+            propertyValues:
+              compFullName: "${u:app/name}-${u:comp/name}"
+            fileName: "${u:ucAdfPackageDir}/Test/Actions/CreateTestCompVersion.yml"
+              
+  #============================================================================
+  # Add the applications to the instances.
+  #============================================================================
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:testApps}
+    itemProperty: "app"
+    actions:
+      - action: UcAdfLoop
+        actionInfo: false
+        items: ${u:envTypes}
+        itemProperty: "envType"
+        actions:
+          - action: UcdRunApplicationProcess
+            application: "ABC Management"
+            environment: "${u:suiteTeamEnvPrefix} ${u:app/suiteName}"
+            process: "Add Application Resources to Instance"
+            properties:
+              - name: "abcEnvType"
+                value: "${u:envType}"
+              - name: "abcProviderName"
+                value: "${u:app/providerName}"
+              - name: "abcInstanceName"
+                value: "${u:app/instanceName}"
+              - name: "abcAppName"
+                value: "${u:app/name}"
+              
+  #============================================================================
+  # Deploy the applications.
+  #============================================================================
+  - action: UcAdfLoop
+    actionInfo: false
+    items: ${u:testApps}
+    itemProperty: "app"
+    actions:
+      - action: UcAdfLoop
+        actionInfo: false
+        items: ${u:envTypes}
+        itemProperty: "envType"
+        actions:
+          - action: UcdRunApplicationProcess
+            when: 'Eval("${u:app1}".equals("${u:app/name}") && "${u:envTypeTest}".equals("${u:envType}"))'
+            application: "${u:app/name}"
+            environment: "${u:envType} ${u:app/providerName} ${u:app/suiteName} ${u:app/instanceName}"
+            process: "Deploy"
+            onlyChanged: false
+            throwException: true

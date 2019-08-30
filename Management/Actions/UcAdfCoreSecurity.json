@@ -1,0 +1,223 @@
+{
+  "actions" : [ {
+    "action" : "UcdCreateRole",
+    "name" : "Administrator",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdCreateRole",
+    "name" : "Public Viewer",
+    "description" : "",
+    "failIfExists" : false
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Add to Agent Pool", "Create Resources", "Delete", "Edit Basic Settings", "Edit License Type", "Execute on Agents", "Install Remote Agents", "Manage Impersonation", "Manage Properties", "Manage Teams", "Manage Version Imports", "Upgrade Agents", "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Agent Configuration Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Agent Configuration Templates", "Delete", "Edit Basic Settings", "Manage Teams", "View Agent Configuration Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Agent Pools", "Create Resources", "Delete", "Edit Basic Settings", "Manage Pool Members", "Manage Teams", "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Agent Relay",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Delete", "Edit Basic Settings", "Manage Teams", "View Agent Relays" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Applications", "Create Applications From Template", "Delete", "Delete Snapshots", "Edit Basic Settings", "Manage Blueprints", "Manage Components", "Manage Environments", "Manage Processes", "Manage Properties", "Manage Snapshots", "Manage Teams", "Run Component Processes", "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Application Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Application Templates", "Delete", "Edit Basic Settings", "Manage Blueprints", "Manage Component Tags", "Manage Environment Templates", "Manage Processes", "Manage Properties", "Manage Teams", "View Application Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Cloud Connection",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Cloud Connections", "Delete", "Edit Basic Settings", "Manage Teams", "View Cloud Connections" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Components", "Create Components From Template", "Delete", "Edit Basic Settings", "Edit Components", "Manage Configuration Templates", "Manage Processes", "Manage Properties", "Manage Teams", "Manage Versions", "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Component Templates", "Delete", "Edit Basic Settings", "Manage Processes", "Manage Properties", "Manage Teams", "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Environment",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Environment Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Environment Templates", "Delete", "Edit Basic Settings", "Manage Approval Processes", "Manage Properties", "Manage Teams", "View Environment Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Processes", "Delete", "Edit Basic Settings", "Execute Processes", "Manage Properties", "Manage Teams", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Resource Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Create Resource Templates", "Delete", "Edit Basic Settings", "Manage Resources", "Manage Teams", "View Resource Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Server Configuration",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Add Team Members", "Edit Basic System Settings", "Edit Network Settings", "Manage Audit Log", "Manage Auth Token Restrictions", "Manage Blueprint Designer Integrations", "Manage Diagnostics", "Manage Logging Settings", "Manage Notification Schemes", "Manage Plugins", "Manage Post Processing Scripts", "Manage Resource Roles", "Manage Security", "Manage Statuses", "Manage System Properties", "Read Artifact Set List", "Release Locks", "View Audit Log", "View Basic System Settings", "View Locks", "View Network Settings", "View Output Log" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Administrator",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Processes Tab", "Reports Tab", "Resources Tab", "Settings Tab", "Work Items Tab" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Agent",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Agents", "View Agents" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Agent Pool",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Pools" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Agent Relay",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Agent Relays" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Application",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Applications" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Application Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Application Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Cloud Connection",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Cloud Connections" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Component Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Component Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Environment",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Environments", "View Environments" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Environment Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Environment Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Process",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute Processes", "View Processes" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Resource",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Execute on Resources", "View Resources" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Resource Template",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "View Resource Templates" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "Public Viewer",
+    "type" : "Web UI",
+    "subtype" : "",
+    "removeOthers" : false,
+    "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Processes Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
+  } ]
+}

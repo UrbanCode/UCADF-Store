@@ -1,0 +1,81 @@
+# ===============================================================================
+# Creates an application.
+#
+# Expected properties:
+# - application
+# - appTeamName
+# (TBD) appDescription
+# ===============================================================================
+actions:
+  # Create an application.
+  - action: UcdCreateApplication
+    name: "${u:application}"
+    failIfExists: false
+
+  # Add the application to a team.
+  - action: UcdAddApplicationToTeams
+    application: "${u:application}"
+    teams:
+      - team: "${u:appTeamName}"
+
+  # Add the UCADF management component to the application.
+  - action: UcdAddComponentToApplication
+    application: "${u:application}"
+    component: "${u:ucAdfManagementComponent}"
+    
+  # Create the application management environment.
+  - action: UcdCreateEnvironment
+    application: "${u:application}"
+    name: "Management"
+    color: "BLUE"
+    failIfExists: false
+
+  - action: UcdAddEnvironmentToTeams
+    application: "${u:application}"
+    environment: "Management"
+    teams:
+      - team: "${u:appTeamName}"
+        subtype: "${u:environmentRoleTypeAppMgt}"
+    removeOthers: true
+
+  - action: UcdAddEnvironmentConditions
+    application: "${u:application}"
+    environment: "Management"
+    conditions:
+      -
+        - "Active"
+    
+  - action: UcdAddEnvironmentBaseResources
+    application: "${u:application}"
+    environment: "Management"
+    resources:
+      - "${u:ucAdfManagementPath}/${u:ucAdfManagementComponent}"
+      
+  - action: UcdSetEnvironmentProperties
+    application: "${u:application}"
+    environment: "Management"
+    properties:
+      - name: "ucAdfAppAssembly"
+        value: "${u:ucAdfAppAssembly}"
+
+  - action: UcdCreateComponent
+    name: "${u:application}-UCProcessCache"
+    template: "${u:ucAdfName}-Template"
+    failIfExists: false
+    
+  - action: UcdAddComponentToTeams
+    component: "${u:application}-UCProcessCache"
+    teams:
+      - team: "${u:appTeamName}"
+    removeOthers: true
+    
+  - action: UcdSetComponentProperties
+    component: "${u:application}-UCProcessCache"
+    properties:
+      - name: "ucAdfComponentType"
+        value: "Cache"
+
+  - action: UcdSyncApplicationProcesses
+    fromApplication: "${u:ucAdfAppAssembly}"
+    toApplication: "${u:application}"
+    
