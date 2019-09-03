@@ -72,7 +72,7 @@ actions:
     actionReturnPropertyName: agents
     
   # Add the GenericAgent tag to the list of agents.
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: "${u:agents}"
     actions:
@@ -124,7 +124,7 @@ actions:
   # Add agent relays to the Public team for visibility.
   - action: UcdGetAgentRelays
     actionReturnPropertyName: agentRelays
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: "${u:agentRelays}"
     actions:

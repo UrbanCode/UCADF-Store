@@ -33,12 +33,12 @@ actions:
   #============================================================================
   # Create the test providers.
   #============================================================================
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:envTypes}
     itemProperty: "envType"
     actions:
-      - action: UcAdfLoop
+      - action: UcAdfItemsLoop
         actionInfo: false
         items: ${u:providers}
         itemProperty: "providerName"
@@ -56,7 +56,7 @@ actions:
   #============================================================================
   # Create the test suites.
   #============================================================================
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:suites}
     itemProperty: "suiteName"
@@ -78,17 +78,17 @@ actions:
   #============================================================================
   # Add the test suites and instances to the test providers.
   #============================================================================
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:envTypes}
     itemProperty: "envType"
     actions:
-      - action: UcAdfLoop
+      - action: UcAdfItemsLoop
         actionInfo: false
         items: ${u:suites}
         itemProperty: "suiteName"
         actions:
-          - action: UcAdfLoop
+          - action: UcAdfItemsLoop
             actionInfo: false
             items: ${u:providers}
             itemProperty: "providerName"
@@ -102,7 +102,7 @@ actions:
                     value: "${u:envType}"
                   - name: "abcProviderName"
                     value: "${u:providerName}"
-              - action: UcAdfLoop
+              - action: UcAdfItemsLoop
                 actionInfo: false
                 items: ${u:instances}
                 itemProperty: "instanceName"
@@ -122,7 +122,7 @@ actions:
   #============================================================================
   # Create the test application teams.
   #============================================================================
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:appTeams}
     itemProperty: "appTeamBaseName"
@@ -144,7 +144,7 @@ actions:
   #============================================================================
   # Create the test applications.
   #============================================================================
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:testApps}
     itemProperty: "app"
@@ -162,13 +162,13 @@ actions:
   #============================================================================
   # Create the test components.
   #============================================================================
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:testApps}
     itemProperty: "app"
     actions:
       # Process the application components.
-      - action: UcAdfLoop
+      - action: UcAdfItemsLoop
         actionInfo: false
         items: ${u:app/components}
         itemProperty: "comp"
@@ -194,12 +194,12 @@ actions:
   #============================================================================
   # Add the applications to the instances.
   #============================================================================
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:testApps}
     itemProperty: "app"
     actions:
-      - action: UcAdfLoop
+      - action: UcAdfItemsLoop
         actionInfo: false
         items: ${u:envTypes}
         itemProperty: "envType"
@@ -221,12 +221,12 @@ actions:
   #============================================================================
   # Deploy the applications.
   #============================================================================
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:testApps}
     itemProperty: "app"
     actions:
-      - action: UcAdfLoop
+      - action: UcAdfItemsLoop
         actionInfo: false
         items: ${u:envTypes}
         itemProperty: "envType"

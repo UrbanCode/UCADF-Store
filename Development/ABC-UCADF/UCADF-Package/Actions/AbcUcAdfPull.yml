@@ -23,17 +23,8 @@ actions:
     application: "${u:ucAdfManagementApp}"
     fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfManagementApp}/Application.json"
 
-  - action: UcAdfUpdatePropertiesFile
-    fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfManagementApp}/Application.properties"
-    propertyValues:
-      keystoreNames: "${u:actionReturn/keystoreNames}"
-        
   # Export the UCADF-Assembly application.
   - action: UcdExportApplication
     application: "${u:ucAdfAppAssembly}"
     fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfAppAssembly}/Application.json"
-
-  - action: UcAdfUpdatePropertiesFile
-    fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfAppAssembly}/Application.properties"
-    propertyValues:
-      keystoreNames: "${u:actionReturn/keystoreNames}"
+      

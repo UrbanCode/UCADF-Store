@@ -5,7 +5,7 @@
 # - suiteName
 # ===============================================================================
 actions:
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     items: ${u:suiteTeamRoles}
     itemProperty: "suiteTeamRole"
     actions:

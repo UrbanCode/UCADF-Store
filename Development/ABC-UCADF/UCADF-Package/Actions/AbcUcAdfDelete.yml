@@ -16,7 +16,7 @@ actions:
   # Delete the UCADF applications.
   - action: UcdGetApplications
     match: "^(ABC Management|ABC-UCD.*|ABC-UCADF.*|ABCUCADF.*)$"
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:actionReturn}
     actions:
@@ -26,7 +26,7 @@ actions:
   # Delete the UCADF components.    
   - action: UcdGetComponents
     match: "^(ABC Management|ABC-UCADF.*|ABCUCADF.*)$"
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:actionReturn}
     actions:
@@ -36,7 +36,7 @@ actions:
   # Delete the UCADF component templates.    
   - action: UcdGetComponentTemplates
     match: "^ABC-Template$"
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:actionReturn}
     actions:
@@ -46,7 +46,7 @@ actions:
   # Delete the UCADF generic processes.  
   - action: UcdGetGenericProcesses
     match: "^ABC .*$"
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:actionReturn}
     actions:
@@ -60,7 +60,7 @@ actions:
   # Delete the UCADF test users.    
   - action: UcdGetUsers
     match: "^ABC.*"
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:actionReturn}
     actions:
@@ -70,7 +70,7 @@ actions:
   # Delete the UCADF test teams.
   - action: UcdGetTeams
     match: "^(ABC|ABC .*)$"
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:actionReturn}
     actions:
@@ -80,7 +80,7 @@ actions:
   # Delete the UCADF test roles.
   - action: UcdGetRoles
     match: "^ABC .*$"
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:actionReturn}
     actions:
@@ -90,7 +90,7 @@ actions:
   # Delete the UCADF test security subtypes.
   - action: UcdGetSecuritySubtypes
     match: "^ABC .*$"
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: ${u:actionReturn}
     actions:

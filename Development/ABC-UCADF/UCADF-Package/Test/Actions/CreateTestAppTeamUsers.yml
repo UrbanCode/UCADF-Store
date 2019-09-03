@@ -5,7 +5,7 @@
 # - appTeamBaseName
 # ===============================================================================
 actions:
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     items: ${u:appTeamRoles}
     itemProperty: "appTeamRole"
     actions:
