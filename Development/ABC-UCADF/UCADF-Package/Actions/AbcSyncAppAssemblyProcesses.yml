@@ -9,7 +9,7 @@ actions:
     actionReturnPropertyName: "ucdApplications"
   
   # Process each application.
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     items: ${u:ucdApplications}
     itemProperty: "ucdApplication"
     actions:

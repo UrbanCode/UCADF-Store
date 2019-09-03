@@ -72,19 +72,20 @@ This directory contains UCADF management utilities.
 This directory where any required UCADF packages are downloaded and extracted. The general structure of a UCADF package directory is:
 ```
 /Packages
-  /[PackageName]-Package-[PackageVersion]
-    /Actions
-        (Package-specific action files.)
-    /Applications
-      /[ExportedUrbanCodeApplicationName]
-        (Package-specific Application export files.)
-    /Libraries
-      /[Version]
-        (Package-specific library version files.)
-    /NotificationTemplates
-      (Package-specific notification templates files.)
-    /Test
-      (Package-specific test files.)
+  /[PackageName]-Package
+    /[PackageVersion]
+      /Actions
+          (Package-specific action files.)
+      /Applications
+        /[ExportedUrbanCodeApplicationName]
+          (Package-specific Application export files.)
+      /Libraries
+        /[Version]
+          (Package-specific library version files.)
+      /NotificationTemplates
+        (Package-specific notification templates files.)
+      /Test
+        (Package-specific test files.)
 ```
 
 ### Downloading a UCADF Package from Maven

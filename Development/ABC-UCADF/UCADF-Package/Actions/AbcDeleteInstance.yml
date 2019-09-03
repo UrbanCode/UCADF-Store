@@ -8,7 +8,7 @@
 # - instanceName
 # ===============================================================================
 actions:
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     items: ${u:instancesPaths}
     itemProperty: "instancesPath"
     actions:
@@ -21,7 +21,7 @@ actions:
             parent: "${u:instancesPath}"
             depth: 6
           # Process each application-level resource.
-          - action: UcAdfLoop
+          - action: UcAdfItemsLoop
             items: ${u:actionReturn}
             actions:
               - action: UcdDeleteEnvironment

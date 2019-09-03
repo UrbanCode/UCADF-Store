@@ -42,7 +42,7 @@ actions:
   - action: UcdGetComponentsInApplication
     application: "${u:application}"
     
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     items: ${u:actionReturn}
     itemProperty: "ucdComponent"
     actions:

@@ -8,7 +8,7 @@
 # - instanceName
 # ===============================================================================
 actions:
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     items: ${u:instancesPaths}
     itemProperty: "instancesPath"
     actions:

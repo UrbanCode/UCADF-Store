@@ -20,7 +20,7 @@ actions:
   - action: UcdGetAgents
     actionReturnPropertyName: "agents"
     tag: "GenericAgent"
-  - action: UcAdfLoop
+  - action: UcAdfItemsLoop
     actionInfo: false
     items: "${u:agents}"
     actions:

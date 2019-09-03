@@ -29,6 +29,7 @@ actions:
   - action: UcdGetVersion
     component: "UCADF-Core-Package"
     version: "${u:corePackageVersion}"
+    failIfNotFound: false
     
   # ==================================================================================
   # If no package version was specified then generate one.
