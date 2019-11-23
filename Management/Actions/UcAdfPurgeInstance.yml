@@ -1,0 +1,203 @@
+# ===============================================================================
+# !!! WARNING !!! This actions file PURGES ALL DATA from an UrbanCode instance.
+# ===============================================================================
+propertyValues:
+  # Set to false to see what would be deleted without deleting it.
+  ucAdfCommit: true
+  
+# Initialize the properties.
+propertyFiles:
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.properties"
+  - fileName: "${u:UCADF_STORE}/Instances/${u:ucAdfInstance}/instance.secure.properties"
+
+# The actions to run.
+actions:
+  #==============================================================================          
+  # !!! WARNING !!! Deletes ALL entities from an UrbanCode instance.
+  #==============================================================================          
+  - action: UcAdfComment
+    actionInfo: false
+    comment: "UCD Instance ${u:ucdUrl}"
+    
+  # Delete ALL applications.
+  - action: UcdGetApplications
+    match: ".*"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteApplication
+        application: "${u:item/name}"
+        commit: "${u:ucAdfCommit}"
+
+  # Delete ALL components.    
+  - action: UcdGetComponents
+    match: ".*"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteComponent
+        component: "${u:item/name}"
+        commit: "${u:ucAdfCommit}"
+
+  # Delete ALL component templates.    
+  - action: UcdGetComponentTemplates
+    match: ".*"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteComponentTemplate
+        componentTemplate: "${u:item/name}"
+        commit: "${u:ucAdfCommit}"
+  
+  # Delete ALL generic processes.  
+  - action: UcdGetGenericProcesses
+    match: ".*"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteGenericProcess
+        process: "${u:item/name}"
+        commit: "${u:ucAdfCommit}"
+
+  # Delete ALL top-level resource.    
+  - action: UcdGetChildResources
+    resource: "/"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteResource
+        resource: ${u:item/path}
+        commit: "${u:ucAdfCommit}"
+
+  # Delete ALL authentication realms.
+  - action: UcdGetAuthenticationRealms
+    actionReturnPropertyName: "authenticationRealms"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:authenticationRealms}
+    actions:
+      - action: UcdDeleteAuthenticationRealm
+        when: 'Eval(!"${u:item/name}".equals("Internal Security"))'
+        realm: "${u:item/id}"
+        commit: "${u:ucAdfCommit}"
+        
+  # Delete ALL authorization realms.
+  - action: UcdGetAuthorizationRealms
+    actionReturnPropertyName: "authorizationRealms"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:authorizationRealms}
+    actions:
+      - action: UcdDeleteAuthorizationRealm
+        when: 'Eval(!"${u:item/name}".equals("Internal Security"))'
+        realm: "${u:item/id}"
+        commit: "${u:ucAdfCommit}"
+        
+  # Delete ALL users.    
+  - action: UcdGetUsers
+    match: ".*"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteUser
+        when: 'Eval(${u:item/isDeletable} == true)'
+        user: "${u:item/name}"
+        commit: "${u:ucAdfCommit}"
+
+  # Delete ALL teams.
+  - action: UcdGetTeams
+    match: ".*"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteTeam
+        when: 'Eval(${u:item/isDeletable} == true)'
+        team: "${u:item/name}"
+        commit: "${u:ucAdfCommit}"
+    
+  # Delete ALL roles.
+  - action: UcdGetRoles
+    match: ".*"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteRole
+        when: 'Eval(${u:item/isDeletable} == true)'
+        role: "${u:item/name}"
+        commit: "${u:ucAdfCommit}"
+        
+  # Delete ALL security subtypes.
+  - action: UcdGetSecuritySubtypes
+    match: ".*"
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteSecuritySubtype
+        subtype: "${u:item/name}"
+        commit: "${u:ucAdfCommit}"
+        
+  # Delete ALL VERSION statuses.    
+  - action: UcdGetStatuses
+    type: VERSION
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteStatus
+        type: VERSION
+        status: ${u:item/id}
+        commit: "${u:ucAdfCommit}"
+        
+  # Delete ALL SNAPSHOT statuses.    
+  - action: UcdGetStatuses
+    type: SNAPSHOT
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteStatus
+        type: SNAPSHOT
+        status: ${u:item/id}
+        commit: "${u:ucAdfCommit}"
+        
+  # Delete ALL INVENTORY statuses.    
+  - action: UcdGetStatuses
+    type: INVENTORY
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteStatus
+        when: 'Eval(!"${u:item/name}".equals("Active"))'
+        type: INVENTORY
+        status: ${u:item/id}
+        commit: "${u:ucAdfCommit}"
+
+  # Delete ALL post-processing scripts.    
+  - action: UcdGetPostProcessingScripts
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeletePostProcessingScript
+        script: ${u:item/id}
+        commit: "${u:ucAdfCommit}"
+
+  # Delete ALL system properties.    
+  - action: UcdGetSystemProperties
+  - action: UcAdfItemsLoop
+    actionInfo: false
+    items: ${u:actionReturn}
+    actions:
+      - action: UcdDeleteSystemProperty
+        property: ${u:item/name}
+        commit: "${u:ucAdfCommit}"
