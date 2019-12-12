@@ -19,7 +19,7 @@ actions:
   # ==================================================================================
   # Install the specified UCADF-Core-Plugin version.
   # ==================================================================================
-  - action: UcdInstallPlugin
+  - action: UcdInstallAutomationPlugin
     fileName: "${u:UCADF_STORE}/Plugins/UCADF-Core-Plugin-${u:corePluginVersion}.zip"
 
   # ==================================================================================
