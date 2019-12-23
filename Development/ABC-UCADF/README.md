@@ -229,7 +229,7 @@ This actions file:
 - Uploads the files from the ***packageDir***.
 
 ## Running the ABC UCADF Process Tests on a Test Instance
-The ***[ABC UCADF Process Tests](./UCADF-Package/Test/Actions/ProcessTests.yml)*** go through various scenarios by running UrbanCode Deploy processes in the instance.
+The ***[ABC UCADF Process Tests](./UCADF-Package-Test/Test/Actions/ProcessTests.yml)*** go through various scenarios by running UrbanCode Deploy processes in the instance.
 ```
 ucadfclient -f $ABC_PACKAGEDIR/Test/Actions/ProcessTests.yml -DucAdfInstance=ucadftest -DucAdfPackageDir=$ABC_PACKAGEDIR
 ```
