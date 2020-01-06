@@ -35,7 +35,7 @@ actions:
   # If no package version was specified then generate one.
   # ==================================================================================
   - action: UcAdfWhen
-    when: 'Eval("${u?:packageVersion}".equals(""))'
+    when: '"${u?:packageVersion}".equals("")'
     actions:
       - action: UcAdfComment
         actionInfo: false
@@ -69,7 +69,7 @@ actions:
     
   # If the version was created then add files to the version.
   - action: UcdAddVersionFiles
-    when: 'Eval("${u:versionCreated}" == "true")'
+    when: '"${u:versionCreated}" == "true"'
     component: "ABC-UCADF-Package"
     version: "${u:packageVersion}"
     base: "${u:packageDir}"

@@ -221,7 +221,7 @@ actions:
   # Set environment-specific template properties.
   - action: UcdSetComponentTemplateProperties
     componentTemplate: "ABC-Template"
-    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(Development|Test)$/)'
+    when: '"${u:ucAdfEnvType}" ==~ /^(Development|Test)$/'
     properties:
       - name: "abcDeployFakeRun"
         value: true
@@ -235,7 +235,7 @@ actions:
 
   - action: UcdSetComponentTemplateProperties
     componentTemplate: "ABC-Template"
-    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(UAT|Production)$/)'
+    when: '"${u:ucAdfEnvType}" ==~ /^(UAT|Production)$/'
     properties:
       - name: "abcDeployFakeRun"
         value: false
@@ -309,7 +309,7 @@ actions:
     failIfExists: false
     
   - action: UcdSetResourceProperties
-    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(Development|Test)$/)'
+    when: '"${u:ucAdfEnvType}" ==~ /^(Development|Test)$/'
     resource: "/ABC/Instances/Production"
     properties:
       - name: "abcActivateApprovalEnv"
@@ -320,7 +320,7 @@ actions:
     failIfExists: false
     
   - action: UcdSetResourceProperties
-    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(Development|Test)$/)'
+    when: '"${u:ucAdfEnvType}" ==~ /^(Development|Test)$/'
     resource: "/ABC/Instances/Test"
     properties: 
       - name: "abcActivateApprovalEnv"
@@ -341,7 +341,7 @@ actions:
     failIfExists: false
     
   - action: UcdSetResourceProperties
-    when: 'Eval("${u:ucAdfEnvType}" ==~ /^(Development|Test)$/)'
+    when: '"${u:ucAdfEnvType}" ==~ /^(Development|Test)$/'
     resource: "/ABC/Management/Lists/Instances"
     properties: 
       - name: "abcUtilImageName"

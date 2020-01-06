@@ -17,7 +17,7 @@ actions:
 
       # Team/role type for instances deploy provider resource.
       - action: UcdAddResourcesToTeams
-        when: 'Eval("${u:instancesPath}" == "${u:instancesDeployPath}")'
+        when: '"${u:instancesPath}" == "${u:instancesDeployPath}"'
         resources:
           - "${u:instancesPath}/${u:envType}/${u:providerName}"
         teams:
@@ -27,7 +27,7 @@ actions:
         
       # Team/role type for instances List provider resource.
       - action: UcdAddResourcesToTeams
-        when: 'Eval("${u:instancesPath}" == "${u:instancesListPath}")'
+        when: '"${u:instancesPath}" == "${u:instancesListPath}"'
         resources:
           - "${u:instancesPath}/${u:envType}/${u:providerName}"
         teams:

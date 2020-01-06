@@ -82,7 +82,7 @@ actions:
     items: ${u:authenticationRealms}
     actions:
       - action: UcdDeleteAuthenticationRealm
-        when: 'Eval(!"${u:item/name}".equals("Internal Security"))'
+        when: '!"${u:item/name}".equals("Internal Security")'
         realm: "${u:item/id}"
         commit: "${u:ucAdfCommit}"
         
@@ -94,7 +94,7 @@ actions:
     items: ${u:authorizationRealms}
     actions:
       - action: UcdDeleteAuthorizationRealm
-        when: 'Eval(!"${u:item/name}".equals("Internal Security"))'
+        when: '!"${u:item/name}".equals("Internal Security")'
         realm: "${u:item/id}"
         commit: "${u:ucAdfCommit}"
         
@@ -106,7 +106,7 @@ actions:
     items: ${u:actionReturn}
     actions:
       - action: UcdDeleteUser
-        when: 'Eval(${u:item/isDeletable} == true)'
+        when: '${u:item/isDeletable} == true'
         user: "${u:item/name}"
         commit: "${u:ucAdfCommit}"
 
@@ -118,7 +118,7 @@ actions:
     items: ${u:actionReturn}
     actions:
       - action: UcdDeleteTeam
-        when: 'Eval(${u:item/isDeletable} == true)'
+        when: '${u:item/isDeletable} == true'
         team: "${u:item/name}"
         commit: "${u:ucAdfCommit}"
     
@@ -130,7 +130,7 @@ actions:
     items: ${u:actionReturn}
     actions:
       - action: UcdDeleteRole
-        when: 'Eval(${u:item/isDeletable} == true)'
+        when: '${u:item/isDeletable} == true'
         role: "${u:item/name}"
         commit: "${u:ucAdfCommit}"
         
@@ -177,7 +177,7 @@ actions:
     items: ${u:actionReturn}
     actions:
       - action: UcdDeleteStatus
-        when: 'Eval(!"${u:item/name}".equals("Active"))'
+        when: '!"${u:item/name}".equals("Active")'
         type: INVENTORY
         status: ${u:item/id}
         commit: "${u:ucAdfCommit}"

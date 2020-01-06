@@ -28,7 +28,7 @@ actions:
     regexExclude: ".*Agent.*"
     failIfNotFound: false
   - action: UcAdfThrowException
-    when: 'Eval(Integer.valueOf(${u:actionReturn}) > 1)'
+    when: 'Integer.valueOf(${u:actionReturn}) > 1'
     message: "Team [${u:appTeamName}] cannot be deleted while it is still associated with ${u:actionReturn} UrbanCode resources."
     
   # Delete the AppTeam environment.

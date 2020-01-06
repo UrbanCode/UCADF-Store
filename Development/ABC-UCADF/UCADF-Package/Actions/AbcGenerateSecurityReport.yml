@@ -8,14 +8,14 @@
 actions:
   # Generate an application team security report.
   - action: UcAdfGenerateSecurityReport
-    when: 'Eval("AppTeam".equals("${u:teamType}"))'
+    when: '"AppTeam".equals("${u:teamType}")'
     teamName: "${u?:teamName}"
     teamNameRegex: "^${u:appTeamNamePrefix}.*"
     roles: "${u:appTeamRoles}"
 
   # Generate a suite team security report.
   - action: UcAdfGenerateSecurityReport
-    when: 'Eval("SuiteTeam".equals("${u:teamType}"))'
+    when: '"SuiteTeam".equals("${u:teamType}")'
     teamName: "${u?:teamName}"
     teamNameRegex: "^${u:suiteTeamNamePrefix}.*"
     roles: "${u:suiteTeamRoles}"

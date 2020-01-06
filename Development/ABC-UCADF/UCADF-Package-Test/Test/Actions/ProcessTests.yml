@@ -232,7 +232,7 @@ actions:
         itemProperty: "envType"
         actions:
           - action: UcdRunApplicationProcess
-            when: 'Eval("${u:app1}".equals("${u:app/name}") && "${u:envTypeTest}".equals("${u:envType}"))'
+            when: '"${u:app1}".equals("${u:app/name}") && "${u:envTypeTest}".equals("${u:envType}")'
             application: "${u:app/name}"
             environment: "${u:envType} ${u:app/providerName} ${u:app/suiteName} ${u:app/instanceName}"
             process: "Deploy"

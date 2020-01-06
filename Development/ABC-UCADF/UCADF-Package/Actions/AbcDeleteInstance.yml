@@ -14,7 +14,7 @@ actions:
     actions:
       # Delete any application environments associated with the instance.
       - action: UcAdfWhen
-        when: 'Eval("${u:instancesPath}" == "${u:instancesDeployPath}")'
+        when: '"${u:instancesPath}" == "${u:instancesDeployPath}"'
         actions:
           # Find the application-level resources.
           - action: UcdFindResources

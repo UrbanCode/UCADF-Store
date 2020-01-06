@@ -32,7 +32,7 @@ actions:
         value: "${u:compType}"
 
   - action: UcdAddTagsToComponent
-    when: 'Eval("${u:compOrder}" != "")'
+    when: '"${u:compOrder}" != ""'
     component: "${u:compFullName}"
     tags:
       - "${u:ucAdfName}-Order-${u:compOrder}"
