@@ -11,7 +11,7 @@
 	<properties>
 		<ucAppName>ABC-UCADF</ucAppName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<ucAdfCoreVersion>[0.0,)</ucAdfCoreVersion>
+		<ucAdfCoreVersion>[1.0,)</ucAdfCoreVersion>
 	</properties>
 
     <!-- Configuration required to deploy artifacts to a Maven repository. -->
@@ -146,6 +146,35 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
+			
+			<!-- Copy files to the UCADF package directories. -->            
+			<plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-to-package</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <tasks>
+                            	<!-- Copy the Jar to the package directory. -->
+								<delete dir="${basedir}/UCADF-Package/Library" includeemptydirs="true"/>
+                                <mkdir dir="${basedir}/UCADF-Package/Library"/>
+								<copy todir="${basedir}/UCADF-Package/Library">
+								    <fileset dir="${project.build.directory}">
+								        <include name="ABC-UCADF-${project.version}.jar"/>
+								    </fileset>
+								    <fileset dir="${basedir}/src/main/resources">
+								        <include name="log4j2.xml"/>
+								    </fileset>
+								</copy>                                
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 		
 		<!--

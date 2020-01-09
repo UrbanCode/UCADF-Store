@@ -28,7 +28,7 @@
 			<directory>${project.basedir}</directory>
 			<outputDirectory>Library</outputDirectory>
             <includes>
-                <include>log4j.properties</include>
+                <include>log4j2.xml</include>
             </includes>
         </fileSet>
     </fileSets>
