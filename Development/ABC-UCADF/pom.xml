@@ -164,7 +164,7 @@
 								        <include name="ABC-UCADF-${project.version}.jar"/>
 								    </fileset>
 								    <fileset dir="${basedir}/src/main/resources">
-								        <include name="log4j2.xml"/>
+								        <include name="**/*"/>
 								    </fileset>
 								</copy>                                
                             </tasks>
