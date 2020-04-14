@@ -4,7 +4,7 @@ The UrbanCode Application Deployment Framework (UCADF) Store is a directory stru
 Note: All of the instructions and examples are based on using the Git bash shell on a Windows machine. Most of the commands/utilities/examples have not been tested in a Windows (DOS) shell.
 
 ### Related Projects
-The [UCADF-Core-Library](https://github.com/UrbanCode/UCADF-Core-Library), [UCADF-Core-Plugin](https://github.com/UrbanCode/UCADF-Core-Plugin) projects, and the [ABC-UCADF](../Development/ABC-UCADF) README provide related information.
+The [UCADF-Core-Library](https://github.com/UrbanCode/UCADF-Core-Library), [UCADF-Core-Plugin](https://github.com/UrbanCode/UCADF-Core-Plugin) projects, and the [ABC-UCADF](Development/ABC-UCADF) README provide related information.
 
 ## Preparing to Use the UCADF Store
 Open a Bash shell and run commands similar to the following:
