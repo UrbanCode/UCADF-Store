@@ -41,7 +41,7 @@ actions:
         actionInfo: false
         comment: "!!! No value for packageVersion provided so generating one. !!!"
       - action: UcAdfSetActionProperties
-        setStatic: true
+        setFinal: true
         propertyValues:
           packageVersion: 'Eval(import java.text.SimpleDateFormat; new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()))'
       

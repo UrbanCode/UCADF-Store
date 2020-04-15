@@ -7,7 +7,7 @@
 actions:
   # Generate a unique version name.
   - action: UcAdfSetActionProperties
-    setStatic: true
+    setFinal: true
     propertyValues:
       versionName: 'Eval(import java.text.SimpleDateFormat; new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()))'
 
