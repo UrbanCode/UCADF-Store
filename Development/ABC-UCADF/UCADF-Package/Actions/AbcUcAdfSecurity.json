@@ -1004,7 +1004,7 @@
     "subtype" : "",
     "removeOthers" : false,
     "failIfNotFound": false,
-    "permissions" : [ "Create Components", "Create Components From Template", "Delete", "Edit Basic Settings", "Manage Configuration Templates", "Manage Processes", "Manage Properties", "Manage Teams", "Manage Versions", "View Components" ]
+    "permissions" : [ "Create Components", "Create Components From Template", "Delete", "Edit Basic Settings", "Edit Components", "Manage Configuration Templates", "Manage Processes", "Manage Properties", "Manage Teams", "Manage Versions", "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
     "role" : "ABC Superuser",
