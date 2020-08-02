@@ -11,7 +11,7 @@
 	<properties>
 		<ucAppName>ABC-UCADF</ucAppName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<ucAdfCoreVersion>[1.0,)</ucAdfCoreVersion>
+		<ucAdfCoreVersion>[7.0.5.2,)</ucAdfCoreVersion>
 	</properties>
 
     <!-- Configuration required to deploy artifacts to a Maven repository. -->

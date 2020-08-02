@@ -139,7 +139,7 @@ The UCADF is developed using an UrbanCode development instance.
 The examples in this guide use a variable called ***ABC_PACKAGEDIR*** that needs to be set according to what work is being done.
 ```
 # To push from a development directory use this.
-# For development, hote that any files required for the /Library directory will need to be copied there.
+# For development, note that any files required for the /Library directory will need to be copied there.
 export ABC_PACKAGEDIR=$UCADF_STORE/Development/ABC-UCADF/UCADF-Package
 
 # To push from a downloaded package directory use this.

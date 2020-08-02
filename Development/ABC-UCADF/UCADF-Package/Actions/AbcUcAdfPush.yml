@@ -179,7 +179,7 @@ actions:
     compTempMatch: "^ABC( |-).*$"
     genProcessMatch: "^(ABC$|ABC-.*|ABC .*)$"
     envMatch: /^$/
-    removeCrypt: false
+    removeCrypt: true
 
   # Run additional actions to configure the application processes.
   - action: UcAdfRunActionsFromFile
@@ -198,7 +198,7 @@ actions:
     compTempMatch: "^ABC-Template$"
     genProcessMatch: "^$"
     envMatch: /^$/
-    removeCrypt: false
+    removeCrypt: true
 
   - action: UcAdfRunActionsFromFile
     fileName: "${u:packageDir}/Applications/ABC-UCDAssembly/Application.actions.json"
