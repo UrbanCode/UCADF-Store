@@ -59,6 +59,12 @@ actions:
     description: "ABC Team"
     failIfExists: false
     
+  # Create the support group.
+  - action: UcdCreateGroup
+    name: "uc_support"
+    authorizationRealm: "Internal Security"
+    failIfExists: false
+    
   # Set up the UCADF Team elevated privileges.
   - action: UcdChangeTeamMembers
     teamRoles:
