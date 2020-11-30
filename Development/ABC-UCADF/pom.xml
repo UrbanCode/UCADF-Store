@@ -218,5 +218,13 @@
             <artifactId>UCADF-Core-Library</artifactId>
             <version>${ucAdfCoreVersion}</version>
         </dependency>
+        
+		<!-- groovy-ant was excluded from groovy-all but we need it at compile time. -->
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-ant</artifactId>
+			<version>3.0.6</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>
