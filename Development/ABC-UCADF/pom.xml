@@ -11,7 +11,7 @@
 	<properties>
 		<ucAppName>ABC-UCADF</ucAppName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<ucAdfCoreVersion>[1.0,)</ucAdfCoreVersion>
+		<ucAdfCoreVersion>[7.0.5.2,)</ucAdfCoreVersion>
 	</properties>
 
     <!-- Configuration required to deploy artifacts to a Maven repository. -->
@@ -218,5 +218,13 @@
             <artifactId>UCADF-Core-Library</artifactId>
             <version>${ucAdfCoreVersion}</version>
         </dependency>
+        
+		<!-- groovy-ant was excluded from groovy-all but we need it at compile time. -->
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-ant</artifactId>
+			<version>3.0.6</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>

@@ -59,6 +59,12 @@ actions:
     description: "ABC Team"
     failIfExists: false
     
+  # Create the support group.
+  - action: UcdCreateGroup
+    name: "uc_support"
+    authorizationRealm: "Internal Security"
+    failIfExists: false
+    
   # Set up the UCADF Team elevated privileges.
   - action: UcdChangeTeamMembers
     teamRoles:
@@ -179,7 +185,7 @@ actions:
     compTempMatch: "^ABC( |-).*$"
     genProcessMatch: "^(ABC$|ABC-.*|ABC .*)$"
     envMatch: /^$/
-    removeCrypt: false
+    removeCrypt: true
 
   # Run additional actions to configure the application processes.
   - action: UcAdfRunActionsFromFile
@@ -198,7 +204,7 @@ actions:
     compTempMatch: "^ABC-Template$"
     genProcessMatch: "^$"
     envMatch: /^$/
-    removeCrypt: false
+    removeCrypt: true
 
   - action: UcAdfRunActionsFromFile
     fileName: "${u:packageDir}/Applications/ABC-UCDAssembly/Application.actions.json"

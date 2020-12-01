@@ -17,14 +17,17 @@ actions:
   - action: UcdWriteSecurityRolesPermissions
     match: "^ABC .*"
     fileName: "${u:ucAdfPackageDir}/Actions/AbcUcAdfSecurity.json"
+    failIfNotFound: false
 
   # Export the UCADF Management application.
   - action: UcdExportApplication
     application: "${u:ucAdfManagementApp}"
+    environmentMatch: ""
     fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfManagementApp}/Application.json"
 
   # Export the UCADF-Assembly application.
   - action: UcdExportApplication
     application: "${u:ucAdfAppAssembly}"
+    environmentMatch: ""
     fileName: "${u:ucAdfPackageDir}/Applications/${u:ucAdfAppAssembly}/Application.json"
       

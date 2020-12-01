@@ -135,6 +135,7 @@
     "type" : "Agent",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Agents", "View Agents" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -142,6 +143,7 @@
     "type" : "Agent Pool",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Pools" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -149,6 +151,7 @@
     "type" : "Application",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Manage Properties", "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -156,6 +159,7 @@
     "type" : "Application",
     "subtype" : "ABC Management Application",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -163,6 +167,7 @@
     "type" : "Cloud Connection",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Cloud Connections" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -170,6 +175,7 @@
     "type" : "Component",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Manage Properties", "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -177,6 +183,7 @@
     "type" : "Component",
     "subtype" : "ABC Management Component",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -184,6 +191,7 @@
     "type" : "Component Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Component Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -191,6 +199,7 @@
     "type" : "Environment",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -198,6 +207,7 @@
     "type" : "Environment",
     "subtype" : "ABC AppMgt Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -205,6 +215,7 @@
     "type" : "Environment",
     "subtype" : "ABC AppTeam Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -212,6 +223,7 @@
     "type" : "Environment",
     "subtype" : "ABC Management Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -219,6 +231,7 @@
     "type" : "Environment",
     "subtype" : "ABC Production Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -226,6 +239,7 @@
     "type" : "Environment",
     "subtype" : "ABC Research Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -233,6 +247,7 @@
     "type" : "Environment",
     "subtype" : "ABC SuiteTeam Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -240,6 +255,7 @@
     "type" : "Environment",
     "subtype" : "ABC Test Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -247,6 +263,7 @@
     "type" : "Process",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute Processes", "View Processes" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -254,6 +271,7 @@
     "type" : "Resource",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -261,6 +279,7 @@
     "type" : "Resource",
     "subtype" : "ABC Application Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -268,6 +287,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instance Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -275,6 +295,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instances Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -282,6 +303,7 @@
     "type" : "Resource",
     "subtype" : "ABC Provider Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -289,6 +311,7 @@
     "type" : "Resource",
     "subtype" : "ABC Suite Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -296,6 +319,7 @@
     "type" : "Resource Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resource Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -303,6 +327,7 @@
     "type" : "Web UI",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -310,6 +335,7 @@
     "type" : "Agent",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Agents", "View Agents" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -317,6 +343,7 @@
     "type" : "Agent Pool",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Pools" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -324,6 +351,7 @@
     "type" : "Agent Relay",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Relays" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -331,6 +359,7 @@
     "type" : "Application",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Manage Properties", "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -338,6 +367,7 @@
     "type" : "Application",
     "subtype" : "ABC Management Application",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -345,13 +375,23 @@
     "type" : "Component",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Manage Properties", "Manage Versions", "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Application Builder",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "failIfNotFound" : false,
+    "permissions" : [ "Manage Version Status" ]
   }, {
     "action" : "UcdAddRolePermissions",
     "role" : "ABC Application Builder",
     "type" : "Component",
     "subtype" : "ABC Management Component",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -359,6 +399,7 @@
     "type" : "Component Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Component Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -366,6 +407,7 @@
     "type" : "Environment",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -373,6 +415,7 @@
     "type" : "Environment",
     "subtype" : "ABC AppMgt Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -380,6 +423,7 @@
     "type" : "Environment",
     "subtype" : "ABC Management Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -387,6 +431,7 @@
     "type" : "Environment",
     "subtype" : "ABC Production Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -394,6 +439,7 @@
     "type" : "Environment",
     "subtype" : "ABC Research Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -401,6 +447,7 @@
     "type" : "Environment",
     "subtype" : "ABC Test Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -408,6 +455,7 @@
     "type" : "Process",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute Processes", "View Processes" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -415,6 +463,7 @@
     "type" : "Resource",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -422,6 +471,7 @@
     "type" : "Resource",
     "subtype" : "ABC Application Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -429,6 +479,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instance Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -436,6 +487,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instances Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -443,6 +495,7 @@
     "type" : "Resource",
     "subtype" : "ABC Provider Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -450,6 +503,7 @@
     "type" : "Resource",
     "subtype" : "ABC Suite Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -457,6 +511,7 @@
     "type" : "Web UI",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -464,6 +519,7 @@
     "type" : "Agent",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Agents", "View Agents" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -471,6 +527,7 @@
     "type" : "Agent Pool",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Pools" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -478,6 +535,7 @@
     "type" : "Agent Relay",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Relays" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -485,6 +543,7 @@
     "type" : "Application",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -492,6 +551,7 @@
     "type" : "Component",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -499,6 +559,7 @@
     "type" : "Component Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Component Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -506,6 +567,7 @@
     "type" : "Environment",
     "subtype" : "ABC Production Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -513,6 +575,7 @@
     "type" : "Process",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute Processes", "View Processes" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -520,6 +583,7 @@
     "type" : "Resource",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -527,6 +591,7 @@
     "type" : "Resource",
     "subtype" : "ABC Application Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -534,6 +599,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instance Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -541,6 +607,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instances Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -548,6 +615,7 @@
     "type" : "Resource",
     "subtype" : "ABC Provider Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -555,6 +623,7 @@
     "type" : "Resource",
     "subtype" : "ABC Suite Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -562,6 +631,7 @@
     "type" : "Web UI",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -569,6 +639,7 @@
     "type" : "Agent",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Agents", "View Agents" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -576,6 +647,7 @@
     "type" : "Agent Pool",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Pools" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -583,6 +655,7 @@
     "type" : "Agent Relay",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Relays" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -590,6 +663,7 @@
     "type" : "Application",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -597,6 +671,7 @@
     "type" : "Component",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -604,6 +679,7 @@
     "type" : "Component Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Component Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -611,6 +687,7 @@
     "type" : "Environment",
     "subtype" : "ABC Test Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -618,6 +695,7 @@
     "type" : "Process",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute Processes", "View Processes" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -625,6 +703,7 @@
     "type" : "Resource",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -632,6 +711,7 @@
     "type" : "Resource",
     "subtype" : "ABC Application Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -639,6 +719,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instance Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -646,6 +727,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instances Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -653,6 +735,7 @@
     "type" : "Resource",
     "subtype" : "ABC Provider Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -660,6 +743,7 @@
     "type" : "Resource",
     "subtype" : "ABC Suite Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -667,6 +751,7 @@
     "type" : "Web UI",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -674,6 +759,7 @@
     "type" : "Agent",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Agents", "View Agents" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -681,6 +767,7 @@
     "type" : "Agent Pool",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Pools" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -688,6 +775,7 @@
     "type" : "Application",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Manage Properties", "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -695,6 +783,7 @@
     "type" : "Application",
     "subtype" : "ABC Management Application",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -702,6 +791,7 @@
     "type" : "Cloud Connection",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Cloud Connections" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -709,6 +799,7 @@
     "type" : "Component",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Manage Properties", "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -716,6 +807,7 @@
     "type" : "Component",
     "subtype" : "ABC Management Component",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -723,6 +815,7 @@
     "type" : "Component Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Component Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -730,6 +823,7 @@
     "type" : "Environment",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -737,6 +831,7 @@
     "type" : "Environment",
     "subtype" : "ABC AppMgt Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -744,6 +839,7 @@
     "type" : "Environment",
     "subtype" : "ABC AppTeam Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -751,6 +847,7 @@
     "type" : "Environment",
     "subtype" : "ABC Management Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -758,6 +855,7 @@
     "type" : "Environment",
     "subtype" : "ABC Production Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -765,6 +863,7 @@
     "type" : "Environment",
     "subtype" : "ABC Research Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -772,6 +871,7 @@
     "type" : "Environment",
     "subtype" : "ABC Test Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "Manage Properties", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -779,6 +879,7 @@
     "type" : "Process",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute Processes", "View Processes" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -786,6 +887,7 @@
     "type" : "Resource",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -793,6 +895,7 @@
     "type" : "Resource",
     "subtype" : "ABC Application Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -800,6 +903,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instance Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -807,6 +911,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instances Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -814,6 +919,7 @@
     "type" : "Resource",
     "subtype" : "ABC Provider Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -821,6 +927,7 @@
     "type" : "Resource",
     "subtype" : "ABC Suite Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -828,6 +935,7 @@
     "type" : "Resource Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resource Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -835,6 +943,7 @@
     "type" : "Web UI",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -842,6 +951,7 @@
     "type" : "Agent",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Agents", "View Agents" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -849,6 +959,7 @@
     "type" : "Agent Pool",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Pools" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -856,6 +967,7 @@
     "type" : "Agent Relay",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Relays" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -863,6 +975,7 @@
     "type" : "Application",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -870,6 +983,7 @@
     "type" : "Application",
     "subtype" : "ABC Management Application",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -877,6 +991,7 @@
     "type" : "Component",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -884,6 +999,7 @@
     "type" : "Component Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Component Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -891,6 +1007,7 @@
     "type" : "Environment",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -898,6 +1015,7 @@
     "type" : "Environment",
     "subtype" : "ABC SuiteTeam Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Environments", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -905,6 +1023,7 @@
     "type" : "Process",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute Processes", "View Processes" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -912,6 +1031,7 @@
     "type" : "Resource",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Resources", "Execute on Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -919,6 +1039,7 @@
     "type" : "Resource",
     "subtype" : "ABC Application Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -926,6 +1047,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instance Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -933,6 +1055,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instances Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -940,6 +1063,7 @@
     "type" : "Resource",
     "subtype" : "ABC Provider Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -947,6 +1071,7 @@
     "type" : "Resource",
     "subtype" : "ABC Suite Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Manage Properties", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -954,6 +1079,7 @@
     "type" : "Web UI",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -961,6 +1087,7 @@
     "type" : "Agent",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Add to Agent Pool", "Create Resources", "Delete", "Edit Basic Settings", "Execute on Agents", "Manage Impersonation", "Manage Properties", "Manage Teams", "Manage Version Imports", "Upgrade Agents", "View Agents" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -968,6 +1095,7 @@
     "type" : "Agent Pool",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Agent Pools", "Create Resources", "Delete", "Edit Basic Settings", "Manage Pool Members", "Manage Teams", "View Agent Pools" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -975,6 +1103,7 @@
     "type" : "Application",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Applications", "Delete", "Delete Snapshots", "Edit Basic Settings", "Manage Blueprints", "Manage Components", "Manage Environments", "Manage Processes", "Manage Properties", "Manage Snapshots", "Manage Teams", "Run Component Processes", "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -982,6 +1111,7 @@
     "type" : "Application",
     "subtype" : "ABC AdminOnly Application",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Applications", "Delete", "Delete Snapshots", "Edit Basic Settings", "Manage Blueprints", "Manage Components", "Manage Environments", "Manage Processes", "Manage Properties", "Manage Snapshots", "Manage Teams", "Run Component Processes", "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -989,6 +1119,7 @@
     "type" : "Application",
     "subtype" : "ABC Management Application",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Applications", "Delete", "Delete Snapshots", "Edit Basic Settings", "Manage Blueprints", "Manage Components", "Manage Environments", "Manage Processes", "Manage Properties", "Manage Snapshots", "Manage Teams", "Run Component Processes", "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -996,6 +1127,7 @@
     "type" : "Cloud Connection",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Cloud Connections", "Delete", "Edit Basic Settings", "Manage Teams", "View Cloud Connections" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1003,13 +1135,23 @@
     "type" : "Component",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Components", "Create Components From Template", "Delete", "Edit Basic Settings", "Edit Components", "Manage Configuration Templates", "Manage Processes", "Manage Properties", "Manage Teams", "Manage Versions", "View Components" ]
+  }, {
+    "action" : "UcdAddRolePermissions",
+    "role" : "ABC Superuser",
+    "type" : "Component",
+    "subtype" : "",
+    "removeOthers" : false,
+    "failIfNotFound" : false,
+    "permissions" : [ "Manage Version Status" ]
   }, {
     "action" : "UcdAddRolePermissions",
     "role" : "ABC Superuser",
     "type" : "Component",
     "subtype" : "ABC Management Component",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1017,6 +1159,7 @@
     "type" : "Component Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Component Templates", "Delete", "Edit Basic Settings", "Manage Processes", "Manage Properties", "Manage Teams", "View Component Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1024,6 +1167,7 @@
     "type" : "Environment",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1031,6 +1175,7 @@
     "type" : "Environment",
     "subtype" : "ABC AppMgt Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1038,6 +1183,7 @@
     "type" : "Environment",
     "subtype" : "ABC AppTeam Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1045,6 +1191,7 @@
     "type" : "Environment",
     "subtype" : "ABC Management Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1052,6 +1199,7 @@
     "type" : "Environment",
     "subtype" : "ABC Production Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1059,6 +1207,7 @@
     "type" : "Environment",
     "subtype" : "ABC Research Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1066,6 +1215,7 @@
     "type" : "Environment",
     "subtype" : "ABC SuiteTeam Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1073,6 +1223,7 @@
     "type" : "Environment",
     "subtype" : "ABC Test Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Environments", "Create Environments From Template", "Delete", "Edit Basic Settings", "Execute on Environments", "Manage Approval Processes", "Manage Base Resources", "Manage Properties", "Manage Teams", "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1080,6 +1231,7 @@
     "type" : "Process",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Processes", "Delete", "Edit Basic Settings", "Execute Processes", "Manage Properties", "Manage Teams", "View Processes" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1087,6 +1239,7 @@
     "type" : "Resource",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1094,6 +1247,7 @@
     "type" : "Resource",
     "subtype" : "ABC Application Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1101,6 +1255,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instance Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1108,6 +1263,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instances Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1115,6 +1271,7 @@
     "type" : "Resource",
     "subtype" : "ABC Provider Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1122,6 +1279,7 @@
     "type" : "Resource",
     "subtype" : "ABC Suite Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Resources", "Delete", "Edit Basic Settings", "Execute on Resources", "Manage Children", "Manage Impersonation", "Manage Properties", "Manage Teams", "Map to Environments", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1129,6 +1287,7 @@
     "type" : "Resource Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Create Resource Templates", "Delete", "Edit Basic Settings", "Manage Resources", "Manage Teams" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1136,6 +1295,7 @@
     "type" : "Web UI",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Processes Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1143,6 +1303,7 @@
     "type" : "Agent",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agents" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1150,6 +1311,7 @@
     "type" : "Agent Pool",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Pools" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1157,6 +1319,7 @@
     "type" : "Agent Relay",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Agent Relays" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1164,6 +1327,7 @@
     "type" : "Application",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1171,6 +1335,7 @@
     "type" : "Application",
     "subtype" : "ABC Management Application",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Applications" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1178,6 +1343,7 @@
     "type" : "Component",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1185,6 +1351,7 @@
     "type" : "Component",
     "subtype" : "ABC Management Component",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Components" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1192,6 +1359,7 @@
     "type" : "Component Template",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Component Templates" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1199,6 +1367,7 @@
     "type" : "Environment",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1206,6 +1375,7 @@
     "type" : "Environment",
     "subtype" : "ABC AppMgt Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1213,6 +1383,7 @@
     "type" : "Environment",
     "subtype" : "ABC AppTeam Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1220,6 +1391,7 @@
     "type" : "Environment",
     "subtype" : "ABC Management Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1227,6 +1399,7 @@
     "type" : "Environment",
     "subtype" : "ABC Production Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1234,6 +1407,7 @@
     "type" : "Environment",
     "subtype" : "ABC Research Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1241,6 +1415,7 @@
     "type" : "Environment",
     "subtype" : "ABC SuiteTeam Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1248,6 +1423,7 @@
     "type" : "Environment",
     "subtype" : "ABC Test Environment",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Environments" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1255,6 +1431,7 @@
     "type" : "Process",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute Processes", "View Processes" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1262,6 +1439,7 @@
     "type" : "Resource",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Execute on Resources", "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1269,6 +1447,7 @@
     "type" : "Resource",
     "subtype" : "ABC Application Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1276,6 +1455,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instance Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1283,6 +1463,7 @@
     "type" : "Resource",
     "subtype" : "ABC Instances Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1290,6 +1471,7 @@
     "type" : "Resource",
     "subtype" : "ABC Provider Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1297,6 +1479,7 @@
     "type" : "Resource",
     "subtype" : "ABC Suite Resource",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "View Resources" ]
   }, {
     "action" : "UcdAddRolePermissions",
@@ -1304,6 +1487,7 @@
     "type" : "Web UI",
     "subtype" : "",
     "removeOthers" : false,
+    "failIfNotFound" : false,
     "permissions" : [ "Applications Tab", "Components Tab", "Configuration Tab", "Dashboard Tab", "Deployment Calendar Tab", "Reports Tab", "Resources Tab", "Work Items Tab" ]
   } ]
 }
